@@ -18,9 +18,14 @@
 - [x] 基础命令整理
 - [x] GPIO操作
 - [ ] 传感器使用
-- [ ] 摄像头应用
+- [x] 摄像头应用
 - [ ] 网络配置
 - [ ] 系统优化
+
+## 学习资源
+
+### 摄像头安装教程
+- [B站视频：树莓派摄像头安装教程](https://www.bilibili.com/video/BV1eeSFYWE9t/?spm_id_from=333.337.search-card.all.click&vd_source=b29f67d267674ff50c9d4302cc22ab0e)
 
 ---
 
