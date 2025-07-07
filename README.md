@@ -30,3 +30,4 @@
 ---
 
 持续更新中... 
+本项目遵循 [MIT License](LICENSE)。
