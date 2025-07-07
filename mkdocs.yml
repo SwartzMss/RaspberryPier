@@ -1,0 +1,8 @@
+site_name: RaspberryPier
+site_description: RaspberryPi 5 study notes
+docs_dir: RaspberryPier
+theme:
+  name: readthedocs
+nav:
+  - 首页: index.md
+  - 树莓派专用命令: raspberrypi_basic_commands.md

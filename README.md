@@ -28,5 +28,14 @@
 - [B站视频：树莓派摄像头安装教程](https://www.bilibili.com/video/BV1eeSFYWE9t/?spm_id_from=333.337.search-card.all.click&vd_source=b29f67d267674ff50c9d4302cc22ab0e)
 
 ---
+## 本地构建文档
+
+```bash
+pip install mkdocs
+mkdocs serve
+```
+
+也可以使用 `make docs` 生成静态站点。
+
 
 持续更新中... 
