@@ -1,8 +1,11 @@
 site_name: RaspberryPier
 site_description: RaspberryPi 5 study notes
-docs_dir: RaspberryPier
+docs_dir: docs
 theme:
   name: readthedocs
 nav:
-  - 首页: index.md
-  - 树莓派专用命令: raspberrypi_basic_commands.md
+  - 首页: docs/index.md
+  - 树莓派专用命令: docs/commands.md
+  - 网络配置: docs/network.md
+  - 传感器: docs/sensors.md
+  - 系统优化: docs/system_optimization.md
