@@ -1,25 +1,31 @@
-name: Build Docs
-
+name: Deploy Docs
 on:
   push:
     branches: ["**"]
   pull_request:
 
 jobs:
-  build-docs:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # 1. 拉取代码
       - uses: actions/checkout@v3
+
+      # 2. 安装 Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+
+      # 3. 安装 MkDocs（和你需要的主题/插件）
       - name: Install dependencies
-        run: pip install mkdocs
-      - name: Build documentation
-        run: make docs
-      - name: Upload site
-        uses: actions/upload-artifact@v4
-        with:
-          name: site
-          path: site/
+        run: |
+          pip install mkdocs
+          # 如果你用 MkDocs Material 或其它插件，可以加：
+          # pip install mkdocs-material
+
+      # 4. 直接一键构建并推送到 gh-pages
+      - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mkdocs gh-deploy --force
