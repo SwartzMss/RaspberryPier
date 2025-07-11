@@ -6,6 +6,7 @@ theme:
 nav:
   - 首页: docs/index.md
   - 树莓派专用命令: docs/commands.md
+  - GPIO 操作指南: docs/gpio.md
   - 网络配置: docs/network.md
   - 传感器: docs/sensors.md
   - 系统优化: docs/system_optimization.md
