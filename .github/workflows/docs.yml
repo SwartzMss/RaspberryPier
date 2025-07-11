@@ -1,28 +1,30 @@
+# .github/workflows/docs.yml
 name: Deploy Docs
+
 on:
   push:
-    branches: ["**"]
+    branches:
+      - main      # 只在 main 有变动时部署
   pull_request:
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 1. 拉取代码
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # 2. 安装 Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      # 3. 安装 MkDocs（和你需要的主题/插件）
       - name: Install dependencies
         run: |
-          pip install mkdocs
+          pip install mkdocs    # 如果你用 MkDocs Material，再加一句：pip install mkdocs-material
 
-      # 4. 直接一键构建并推送到 gh-pages
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
