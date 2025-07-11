@@ -1,4 +1,5 @@
 site_name: RaspberryPier
+site_url: https://github.com/SwartzMss/RaspberryPier
 site_description: RaspberryPi 5 study notes
 docs_dir: docs
 theme:
