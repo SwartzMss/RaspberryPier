@@ -32,3 +32,56 @@ else:
 ```
 
 更多高级用法可以参考外部仓库 [pi5-dht22-tools](https://github.com/SwartzMss/pi5-dht22-tools)。
+
+## HC-SR04 超声波测距模块
+
+HC-SR04 用于测量距离，需要 TRIG 与 ECHO 两个控制引脚，推荐接线如下：
+
+- VCC 接 5V（引脚 2 或 4）
+- GND 接 GND（引脚 6）
+- TRIG 接 GPIO23（引脚 16）
+- ECHO 经电阻分压后接 GPIO24（引脚 18）
+
+下面是基于 `RPi.GPIO` 的示例代码：
+
+```python
+import RPi.GPIO as GPIO
+import time
+
+TRIG = 23
+ECHO = 24
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
+
+def read_distance():
+    GPIO.output(TRIG, False)
+    time.sleep(0.05)
+
+    GPIO.output(TRIG, True)
+    time.sleep(0.00001)
+    GPIO.output(TRIG, False)
+
+    while GPIO.input(ECHO) == 0:
+        start = time.time()
+
+    while GPIO.input(ECHO) == 1:
+        end = time.time()
+
+    duration = end - start
+    distance = duration * 17150
+    return distance
+
+try:
+    while True:
+        dist = read_distance()
+        print(f"Distance: {dist:.2f} cm")
+        time.sleep(1)
+except KeyboardInterrupt:
+    GPIO.cleanup()
+```
+
+更多脚本与说明请参考 [pi5-ultrasonic-tools](https://github.com/SwartzMss/
+pi5-ultrasonic-tools)。
+
