@@ -1,9 +1,10 @@
-This repository hosts notes for learning and using Raspberry Pi 5. All documentation has moved to the [docs/](docs/) directory.
+此仓库包含用于学习和使用 Raspberry Pi 5 的笔记。所有文档已移至 [`docs/`](docs/) 目录。
 
-## Documentation
+## 文档
 
-Use the provided `Makefile` targets to build and preview the documentation:
+使用提供的 `Makefile` 目标来构建并预览文档：
 
-- `make docs` &mdash; build the static site into the `site/` directory.
-- `make serve` &mdash; start a local server so you can preview the docs.
+- `make docs` — 将静态站点构建到 `site/` 目录。  
+- `make serve` — 启动本地服务器以预览文档。
+
 
