@@ -21,8 +21,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install mkdocs
-          # 如果你用 MkDocs Material 或其它插件，可以加：
-          # pip install mkdocs-material
 
       # 4. 直接一键构建并推送到 gh-pages
       - name: Deploy to GitHub Pages
