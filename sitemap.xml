@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://SwartzMss.github.io/RaspberryPier/</loc>
+         <lastmod>2025-07-12</lastmod>
+    </url>
+    <url>
+         <loc>https://SwartzMss.github.io/RaspberryPier/commands/</loc>
+         <lastmod>2025-07-12</lastmod>
+    </url>
+    <url>
+         <loc>https://SwartzMss.github.io/RaspberryPier/gpio/</loc>
+         <lastmod>2025-07-12</lastmod>
+    </url>
+    <url>
+         <loc>https://SwartzMss.github.io/RaspberryPier/network/</loc>
+         <lastmod>2025-07-12</lastmod>
+    </url>
+    <url>
+         <loc>https://SwartzMss.github.io/RaspberryPier/sensors/</loc>
+         <lastmod>2025-07-12</lastmod>
+    </url>
+    <url>
+         <loc>https://SwartzMss.github.io/RaspberryPier/system_optimization/</loc>
+         <lastmod>2025-07-12</lastmod>
+    </url>
+</urlset>
