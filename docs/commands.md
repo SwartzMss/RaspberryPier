@@ -42,12 +42,6 @@ gpio read 18                   # 读取GPIO18状态
 ## 4. 摄像头相关
 
 ```bash
-# 旧版命令（树莓派4及以下）
-raspistill -o image.jpg        # 拍照并保存为image.jpg
-raspistill -t 5000 -o image.jpg # 5秒后拍照
-raspivid -o video.h264         # 录制视频
-raspivid -t 10000 -o video.h264 # 录制10秒视频
-
 # 新版命令（树莓派5）
 rpicam-hello                    # 测试摄像头连接
 rpicam-still -o image.jpg      # 拍照并保存为image.jpg
