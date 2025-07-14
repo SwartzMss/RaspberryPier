@@ -113,6 +113,33 @@ light.when_light = lambda: print("It's light")
 
 上述代码展示了直接读取通道 0 的模拟值，以及用 `LightSensor` 这类高级封装读取光敏电阻。`gpiozero` 会选择配置好的 pin factory，因此 Pi5 上的用法与旧款树莓派一致。
 
+
+## 光敏电阻（数字检测）
+
+如果暂时没有 ADC 模块，可以将光敏电阻当作二值开关使用。将传感器一端接 3.3V，另一端接到 GPIO17，并在程序中启用下拉电阻。亮度高时电压被拉高，读取到逻辑 1；亮度低时下拉电阻使其变为逻辑 0。
+
+```python
+import RPi.GPIO as GPIO
+import time
+
+LDR_PIN = 17
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(LDR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+try:
+    while True:
+        if GPIO.input(LDR_PIN):
+            print("Bright")
+        else:
+            print("Dark")
+        time.sleep(1)
+except KeyboardInterrupt:
+    GPIO.cleanup()
+```
+
+这种方法只能粗略地区分明暗，但足以在没有模数转换器的情况下测试光敏电阻。
+
 ## 声音传感器 (KY-038)
 
 KY-038 或 KY-037 等声音传感器可侦测环境中的噪音强度，通常同时提供模拟 (A0) 与数字 (D0) 输出。如果需要量化声音幅度，可将 A0 接至 MCP3008 等 ADC 模块。
