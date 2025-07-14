@@ -139,3 +139,29 @@ except KeyboardInterrupt:
 ```
 
 这种方法只能粗略地区分明暗，但足以在没有模数转换器的情况下测试光敏电阻。
+
+## 声音传感器 (KY-038)
+
+KY-038 或 KY-037 等声音传感器可侦测环境中的噪音强度，通常同时提供模拟 (A0) 与数字 (D0) 输出。如果需要量化声音幅度，可将 A0 接至 MCP3008 等 ADC 模块。
+
+### 接线示例
+
+- VCC 接 3.3V
+- GND 接 GND
+- A0 接 MCP3008 的 CH0
+- D0 可接任意 GPIO，用于阈值触发 (可选)
+
+### 示例代码
+
+```python
+from gpiozero import SoundSensor
+
+mic = SoundSensor(channel=0)  # 读取 MCP3008 通道 0 的模拟值
+
+while True:
+    mic.wait_for_sound()
+    print("Sound detected!")
+```
+
+上述示例在声音达到阈值时打印提示，可通过 `threshold` 属性调整灵敏度。
+
