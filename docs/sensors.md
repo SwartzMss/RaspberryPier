@@ -2,11 +2,6 @@
 
 Raspberry Pi 5 supports a variety of sensors to extend its capabilities. This document provides an overview of how to connect and read common sensors.
 
-## TODO
-
-- [x] Add wiring instructions for temperature and humidity sensors
-- [x] Provide sample Python code for reading sensor data
-
 ## DHT22 温湿度传感器
 
 DHT22 是常见的温湿度传感器，适合直接连接到树莓派的 GPIO 引脚。推荐接线如下：
