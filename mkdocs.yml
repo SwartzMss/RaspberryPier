@@ -16,4 +16,3 @@ nav:
   - 传感器: sensors.md
   - SH1106 OLED 屏幕: oled.md
   - MQTT 服务器: mqtt.md
-  - 系统优化: system_optimization.md
