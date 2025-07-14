@@ -14,4 +14,5 @@ nav:
   - GPIO 操作指南: gpio.md
   - 网络配置: network.md
   - 传感器: sensors.md
+  - MQTT 服务器: mqtt.md
   - 系统优化: system_optimization.md
