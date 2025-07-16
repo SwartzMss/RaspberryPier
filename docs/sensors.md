@@ -145,7 +145,7 @@ except KeyboardInterrupt:
 
 ## 声音传感器 (KY-038)
 
-KY-038 或 KY-037 等声音传感器可侦测环境中的噪音强度，通常同时提供模拟 (A0) 与数字 (D0) 输出。如果需要量化声音幅度，可将 A0 接至 MCP3008 等 ADC 模块。
+KY-038 或 KY-037 等声音传感器可侦测环境中的噪音强度，通常同时提供模拟 (A0) 与数字 (D0) 输出。如果只需判断是否有较大的声音，可直接读取 D0；若要量化声音幅度，则需将 A0 接至 MCP3008 等 ADC 模块。
 
 ### 接线示例
 
@@ -169,4 +169,28 @@ while True:
 上述示例在声音达到阈值时打印提示，可通过 `threshold` 属性调整灵敏度。
 
 更多脚本与说明请参考 [pi5-soundsensor-tools](https://github.com/SwartzMss/pi5-soundsensor-tools)。
+
+### D0 数字输出示例
+
+如果没有 ADC，仅需侦测是否出现噪音，可直接读取模块的 D0 引脚：
+
+```python
+import lgpio
+import time
+
+MIC_PIN = 17  # D0 所连接的 BCM 编号
+
+# 打开第 0 号 gpiochip，并声明输入
+h = lgpio.gpiochip_open(0)
+lgpio.gpio_claim_input(h, MIC_PIN)
+
+try:
+    while True:
+        if lgpio.gpio_read(h, MIC_PIN):
+            print("Noise detected!")
+        time.sleep(0.1)
+except KeyboardInterrupt:
+    lgpio.gpiochip_close(h)
+```
+
 
