@@ -41,3 +41,5 @@ with canvas(device) as draw:
 
 运行脚本即可在 1.3 寸屏幕上看到文字。`luma.oled` 还支持绘制
 图形、显示图片等功能，可根据需要进一步探索。
+
+完整示例脚本可在 [pi5-oled-i2c-tools](https://github.com/SwartzMss/pi5-oled-i2c-tools) 获取。
