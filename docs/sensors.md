@@ -140,6 +140,8 @@ except KeyboardInterrupt:
 
 这种方法只能粗略地区分明暗，但足以在没有模数转换器的情况下测试光敏电阻。
 
+更多脚本与说明请参考 [pi5-photoresistor-tools](https://github.com/SwartzMss/pi5-photoresistor-tools)。
+
 ## 声音传感器 (KY-038)
 
 KY-038 或 KY-037 等声音传感器可侦测环境中的噪音强度，通常同时提供模拟 (A0) 与数字 (D0) 输出。如果需要量化声音幅度，可将 A0 接至 MCP3008 等 ADC 模块。
@@ -164,4 +166,6 @@ while True:
 ```
 
 上述示例在声音达到阈值时打印提示，可通过 `threshold` 属性调整灵敏度。
+
+更多脚本与说明请参考 [pi5-soundsensor-tools](https://github.com/SwartzMss/pi5-soundsensor-tools)。
 
