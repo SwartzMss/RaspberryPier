@@ -17,3 +17,4 @@ nav:
   - nRF24L01 无线模块: nrf24l01.md
   - SH1106 OLED 屏幕: oled.md
   - MQTT 服务器: mqtt.md
+  - ESP32-CAM 模块使用: esp32cam.md
