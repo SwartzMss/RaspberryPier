@@ -37,31 +37,32 @@ HC-SR04 用于测量距离，需要 TRIG 与 ECHO 两个控制引脚，推荐接
 - TRIG 接 GPIO23（引脚 16）
 - ECHO 经电阻分压后接 GPIO24（引脚 18）
 
-下面是基于 `RPi.GPIO` 的示例代码：
+下面是基于 `lgpio` 的示例代码：
 
 ```python
-import RPi.GPIO as GPIO
+import lgpio
 import time
 
 TRIG = 23
 ECHO = 24
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(TRIG, GPIO.OUT)
-GPIO.setup(ECHO, GPIO.IN)
+# 打开第 0 号 gpiochip
+h = lgpio.gpiochip_open(0)
+lgpio.gpio_claim_output(h, TRIG)
+lgpio.gpio_claim_input(h, ECHO)
 
 def read_distance():
-    GPIO.output(TRIG, False)
+    lgpio.gpio_write(h, TRIG, 0)
     time.sleep(0.05)
 
-    GPIO.output(TRIG, True)
+    lgpio.gpio_write(h, TRIG, 1)
     time.sleep(0.00001)
-    GPIO.output(TRIG, False)
+    lgpio.gpio_write(h, TRIG, 0)
 
-    while GPIO.input(ECHO) == 0:
+    while lgpio.gpio_read(h, ECHO) == 0:
         start = time.time()
 
-    while GPIO.input(ECHO) == 1:
+    while lgpio.gpio_read(h, ECHO) == 1:
         end = time.time()
 
     duration = end - start
@@ -74,11 +75,11 @@ try:
         print(f"Distance: {dist:.2f} cm")
         time.sleep(1)
 except KeyboardInterrupt:
-    GPIO.cleanup()
+    lgpio.gpiochip_close(h)
 ```
 
 更多脚本与说明请参考 [pi5-ultrasonic-tools](https://github.com/SwartzMss/
-pi5-ultrasonic-tools)。
+pi5-ultrasonic-tools)，该仓库已改用 `lgpio` 实现。
 
 
 ## MCP3008 模数转换器
