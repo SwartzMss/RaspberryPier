@@ -9,6 +9,7 @@
 - [GPIO操作指南](./gpio.md)
 - [蓝牙配置与数据交换](./bluetooth.md)
 - [nRF24L01 无线模块](./nrf24l01.md)
+- [电机基础](./motors.md)
 - 硬件监控命令
 - 学习过程中的常用技巧
 - [ESP32-CAM 模块使用](./esp32cam.md)
