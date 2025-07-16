@@ -2,15 +2,6 @@
 
 本文件对 Raspberry Pi 上常用的 GPIO 库进行简要介绍，并说明它们的相互关系。
 
-
-## 引脚布局
-
-以下两张图片展示了树莓派 5 的整体布局以及 GPIO 引脚编号，方便在查阅本文档时快速对应实物：
-
-![Raspberry Pi 5 Layout](../doc/img/layout.jpg)
-
-![GPIO Pins](../doc/img/GPIO.png)
-
 ## gpiozero
 
 `gpiozero` 是 Raspberry Pi Foundation 推荐的 Python 高层库。它通过“pin factory”编程模式集成了多种底层 GPIO 库，使得各种硬件接口的调用更加方便。
