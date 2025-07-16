@@ -10,6 +10,7 @@ theme:
 
 nav:
   - 首页: index.md
+  - 引脚布局: pin-layout.md
   - 树莓派专用命令: commands.md
   - GPIO 操作指南: gpio.md
   - 蓝牙配置与数据交换: bluetooth.md

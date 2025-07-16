@@ -5,11 +5,11 @@
 
 ## 引脚布局
 
-以下两张图片展示了树莓派 5 的整体布局以及 GPIO 引脚编号，方便在查阅本文档时快速对应实物：
+以下两张图片展示了树莓派 5 的整体布局以及 GPIO 引脚编号，方便在查阅本文档时快速对应实物。完整的图片也可在[引脚布局](./pin-layout.md)页面中查看：
 
-![Raspberry Pi 5 Layout](../doc/img/layout.jpg)
+![Raspberry Pi 5 Layout](img/layout.jpg)
 
-![GPIO Pins](../doc/img/GPIO.png)
+![GPIO Pins](img/GPIO.png)
 
 ## gpiozero
 
