@@ -117,26 +117,27 @@ light.when_light = lambda: print("It's light")
 
 ## 光敏电阻（数字检测）
 
-如果暂时没有 ADC 模块，可以将光敏电阻当作二值开关使用。将传感器一端接 3.3V，另一端接到 GPIO17，并在程序中启用下拉电阻。亮度高时电压被拉高，读取到逻辑 1；亮度低时下拉电阻使其变为逻辑 0。
+如果暂时没有 ADC 模块，可以将光敏电阻当作二值开关使用。将传感器一端接 3.3V，另一端接到 GPIO17，并在程序中启用下拉电阻。亮度高时电压被拉高，读取到逻辑 1；亮度低时下拉电阻使其变为逻辑 0。以下示例使用 `lgpio` 读取电平：
 
 ```python
-import RPi.GPIO as GPIO
+import lgpio
 import time
 
 LDR_PIN = 17
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(LDR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+# 打开第 0 号 gpiochip
+h = lgpio.gpiochip_open(0)
+lgpio.gpio_claim_input(h, LDR_PIN, lgpio.SET_BIAS_PULL_DOWN)
 
 try:
     while True:
-        if GPIO.input(LDR_PIN):
+        if lgpio.gpio_read(h, LDR_PIN):
             print("Bright")
         else:
             print("Dark")
         time.sleep(1)
 except KeyboardInterrupt:
-    GPIO.cleanup()
+    lgpio.gpiochip_close(h)
 ```
 
 这种方法只能粗略地区分明暗，但足以在没有模数转换器的情况下测试光敏电阻。
