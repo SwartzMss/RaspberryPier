@@ -7,9 +7,9 @@
 
 以下两张图片展示了树莓派 5 的整体布局以及 GPIO 引脚编号，方便在查阅本文档时快速对应实物：
 
-![Raspberry Pi 5 Layout](layout.jpg)
+![Raspberry Pi 5 Layout](../doc/img/layout.jpg)
 
-![GPIO Pins](GPIO.png)
+![GPIO Pins](../doc/img/GPIO.png)
 
 ## gpiozero
 
