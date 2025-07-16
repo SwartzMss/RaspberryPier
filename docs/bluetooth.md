@@ -11,10 +11,11 @@ sudo apt update
 sudo apt install bluez bluetooth
 ```
 
-启用蓝牙服务：
+启用蓝牙服务后，可执行以下命令确认其是否已成功启动：
 
 ```bash
 sudo systemctl enable --now bluetooth
+sudo systemctl status bluetooth
 ```
 
 ## 连接小米音箱作为蓝牙音箱
@@ -24,6 +25,56 @@ sudo systemctl enable --now bluetooth
 3. 使树莓派进入搜索模式：`scan on`，等待看到小米音箱的 MAC 地址后使用 `pair <MAC>` 进行配对。
 4. 配对成功后执行 `trust <MAC>` 和 `connect <MAC>` 完成连接。
 5. 在桌面环境中或通过 `pactl list sinks` 查看并选择蓝牙音箱作为音频输出即可。
+
+以下示例展示了完整的 `bluetoothctl` 操作流程：
+
+```bash
+$ bluetoothctl
+Agent registered
+[bluetooth]# power on
+Changing power on succeeded
+[bluetooth]# agent on
+Agent is already registered
+[bluetooth]# default-agent
+Default agent request successful
+[bluetooth]# scan on
+Discovery started
+[NEW] Device 24:CF:xx:xx:xx:D4 小爱音箱-7156
+[bluetooth]# pair 24:CF:xx:xx:xx:D4
+Attempting to pair with 24:CF:xx:xx:xx:D4
+[CHG] Device 24:CF:xx:xx:xx:D4 Connected: yes
+[CHG] Device 24:CF:xx:xx:xx:D4 Paired: yes
+Pairing successful
+[bluetooth]# trust 24:CF:xx:xx:xx:D4
+[CHG] Device 24:CF:xx:xx:xx:D4 Trusted: yes
+[bluetooth]# connect 24:CF:xx:xx:xx:D4
+Attempting to connect to 24:CF:xx:xx:xx:D4
+[CHG] Device 24:CF:xx:xx:xx:D4 Connected: yes
+Connection successful
+```
+
+连接后，执行 `pactl list sinks` 可以在输出中看到音箱名称，表明系统已正确识别：
+
+```bash
+$ pactl list sinks
+...
+Description: 小爱音箱-7156
+...
+```
+
+在输出中找到 `node.name` 的值，形如 `bluez_output.24_CF_xx_xx_xx_D4.1`，接着设置该设备为默认输出：
+
+```bash
+pactl set-default-sink bluez_output.24_CF_xx_xx_xx_D4.1
+```
+
+如需测试是否能正常播放，可安装 `sox` 并播放三秒钟 440Hz 正弦波：
+
+```bash
+sudo apt update
+sudo apt install sox libsox-fmt-mp3
+play -n synth 3 sine 440
+```
 
 完成以上步骤后，在树莓派播放的任何音频都会通过蓝牙传输到小米音箱。
 
