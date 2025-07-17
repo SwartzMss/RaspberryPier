@@ -12,6 +12,22 @@
 
 确保在 `raspi-config` 中启用 I2C 接口。
 
+### 查找 I2C 接口与地址
+
+通过在终端执行 `pinout` 命令可以查看树莓派的引脚分布，确认 GPIO2/3 分别
+对应 SDA 与 SCL。如果系统未安装该命令，可执行 `sudo apt install -y
+gpiozero`（或 `sudo apt install -y python3-gpiozero`）获取。
+
+连接好硬件并启用 I2C 后，推荐安装 `i2c-tools` 用于检测设备地址：
+
+```bash
+sudo apt install -y i2c-tools
+i2cdetect -y 1
+```
+
+在扫描结果中通常会看到 `0x3C`，即 SH1106 模块的默认地址，之后在代码中
+应以此地址初始化设备。
+
 ## 安装依赖
 
 推荐使用 `luma.oled` 库控制 SH1106 屏幕：
@@ -42,4 +58,4 @@ with canvas(device) as draw:
 运行脚本即可在 1.3 寸屏幕上看到文字。`luma.oled` 还支持绘制
 图形、显示图片等功能，可根据需要进一步探索。
 
-完整示例脚本可在 [pi5-oled-i2c-tools](https://github.com/SwartzMss/pi5-oled-i2c-tools) 获取。
+完整示例脚本可在 [pi5-oled-i2c-tools](https://github.com/SwartzMss/pi5-oled-i2c-tools) 获取
