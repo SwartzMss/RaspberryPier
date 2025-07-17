@@ -15,6 +15,7 @@ nav:
   - GPIO 操作指南: gpio.md
   - 蓝牙配置与数据交换: bluetooth.md
   - 传感器: sensors.md
+  - 蜂鸣器: buzzer.md
   - 电机基础: motors.md
   - nRF24L01 无线模块: nrf24l01.md
   - SH1106 OLED 屏幕: oled.md
