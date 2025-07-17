@@ -129,9 +129,9 @@ play_wav_via_bluealsa(
 - **权限错误**：
 - 将用户加入 `audio` 组并重启：
     
- ```bash
- sudo usermod -aG audio $USER && reboot
- ```
+```bash
+sudo usermod -aG audio $USER && reboot
+```
 
 - **延迟或掉帧**：
   - 尝试减小 ALSA `period size`，或切换到 PulseAudio/PipeWire。
@@ -166,6 +166,4 @@ mpg123 sample.mp3
 
 ---
 
-### 八、参考
-
-- GitHub：SwartzMss/pi5-bluetooth-tools ([https://github.com/SwartzMss/pi5-bluetooth-tools](https://github.com/SwartzMss/pi5-bluetooth-tools))
+详细参考([https://github.com/SwartzMss/pi5-bluetooth-tools](https://github.com/SwartzMss/pi5-bluetooth-tools))
