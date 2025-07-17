@@ -95,7 +95,7 @@ mpg123 -a bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp sample.mp3
 
 ---
 
-### 五、Python 脚本播放示例、Python 脚本播放示例
+### 五、Python 脚本播放示例
 
 1. 安装 Python ALSA 支持：
 
