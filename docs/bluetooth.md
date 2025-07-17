@@ -14,17 +14,17 @@
 
 1. 更新系统并安装蓝牙服务：
 
-   ```bash
-   sudo apt update
-   sudo apt install -y bluez bluetooth
-   ```
+```bash
+sudo apt update
+sudo apt install -y bluez bluetooth
+```
 
 2. 启用并启动蓝牙服务：
 
-   ```bash
-   sudo systemctl enable --now bluetooth
-   sudo systemctl status bluetooth  # 检查蓝牙服务状态
-   ```
+```bash
+sudo systemctl enable --now bluetooth
+sudo systemctl status bluetooth  # 检查蓝牙服务状态
+```
 
 ---
 
@@ -32,40 +32,40 @@
 
 1. 启动 `bluetoothctl`：
 
-   ```bash
-   bluetoothctl
-   ```
+```bash
+bluetoothctl
+```
 
 2. 在交互式命令行依次执行：
 
-   ```console
-   [bluetooth]# power on        # 打开蓝牙适配器
-   [bluetooth]# agent on        # 启用配对代理
-   [bluetooth]# default-agent   # 将其设为默认代理
-   [bluetooth]# scan on         # 扫描设备，直到看到小爱音箱的 MAC 地址
-   ```
+```console
+[bluetooth]# power on        # 打开蓝牙适配器
+[bluetooth]# agent on        # 启用配对代理
+[bluetooth]# default-agent   # 将其设为默认代理
+[bluetooth]# scan on         # 扫描设备，直到看到小爱音箱的 MAC 地址
+```
 
 3. 配对并信任设备：
 
-   ```bash
-   pair <MAC>      # 配对
-   trust <MAC>     # 信任
-   connect <MAC>   # 连接
-   ```
+```bash
+pair <MAC>      # 配对
+trust <MAC>     # 信任
+connect <MAC>   # 连接
+```
 
 4. 设置默认音频输出：
 
-   ```bash
-   pactl list sinks                    # 列出所有输出设备
-   pactl set-default-sink <Sink_Name>  # 将蓝牙音箱设为默认
-   ```
+```bash
+pactl list sinks                    # 列出所有输出设备
+pactl set-default-sink <Sink_Name>  # 将蓝牙音箱设为默认
+```
 
 5. 测试播放：
 
-   ```bash
-   sudo apt install -y sox libsox-fmt-mp3
-   play -n synth 3 sine 440           # 播放3秒440Hz正弦波
-   ```
+```bash
+sudo apt install -y sox libsox-fmt-mp3
+play -n synth 3 sine 440           # 播放3秒440Hz正弦波
+```
 
 ---
 
@@ -75,23 +75,23 @@
 
 1. 安装 BlueALSA 及相关工具：
 
-   ```bash
-   sudo apt update
-   sudo apt install -y bluealsa alsa-utils
-   ```
+```bash
+sudo apt update
+sudo apt install -y bluealsa alsa-utils
+```
 
 2. 启用并启动 BlueALSA 服务：
 
-   ```bash
-   sudo systemctl enable --now bluealsa
-   ```
+```bash
+sudo systemctl enable --now bluealsa
+```
 
 3. 使用 BlueALSA 播放示例：
 
-   ```bash
-   aplay -D bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp sample.wav
-   mpg123 -a bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp sample.mp3
-   ```
+```bash
+aplay -D bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp sample.wav
+mpg123 -a bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp sample.mp3
+```
 
 ---
 
@@ -99,25 +99,25 @@
 
 1. 安装 Python ALSA 支持：
 
-   ```bash
-   sudo apt install -y python3-alsaaudio
-   ```
+```bash
+sudo apt install -y python3-alsaaudio
+```
 
 2. 运行示例脚本：
 
-   ```bash
-   python3 main.py /home/pi/Music/song.wav bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp
-   ```
+```bash
+python3 main.py /home/pi/Music/song.wav bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp
+```
 
 3. 在自定义脚本中调用：
 
-   ```python
-   from bluealsa_player import play_wav_via_bluealsa
-   play_wav_via_bluealsa(
-       '/home/pi/Music/song.wav',
-       'bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp'
-   )
-   ```
+```python
+from bluealsa_player import play_wav_via_bluealsa
+play_wav_via_bluealsa(
+    '/home/pi/Music/song.wav',
+    'bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp'
+)
+```
 
 ---
 
@@ -129,9 +129,9 @@
 - **权限错误**：
 - 将用户加入 `audio` 组并重启：
     
-    ```bash
-    sudo usermod -aG audio $USER && reboot
-    ```
+ ```bash
+ sudo usermod -aG audio $USER && reboot
+ ```
 
 - **延迟或掉帧**：
   - 尝试减小 ALSA `period size`，或切换到 PulseAudio/PipeWire。
