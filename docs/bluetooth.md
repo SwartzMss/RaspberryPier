@@ -113,3 +113,44 @@ paplay --device=bluez_sink.<MAC_WITH_UNDERSCORES>.a2dp_sink sample.wav
 
 根据需要也可以将上述流程写成脚本，实现自动连接并播放。
 
+
+### Python 脚本播放示例
+
+除了使用 `aplay` 等命令行工具，也可以在 Python 中调用 BlueALSA 播放音频。若已安
+装 `python3-alsaaudio`，可运行示例脚本：
+
+```bash
+python3 main.py /home/pi/Music/song.wav bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp
+```
+
+在其他脚本中复用时可导入 `bluealsa_player.py`：
+
+```python
+from bluealsa_player import play_wav_via_bluealsa
+play_wav_via_bluealsa('/home/pi/Music/song.wav', 'bluealsa:HCI=hci0,DEV=<MAC>,PROFILE=a2dp')
+```
+
+### 故障排除
+
+- **无声音**：确认设备已连接（`bluetoothctl info <MAC>`）。
+- **权限错误**：将当前用户加入 `audio` 组（`sudo usermod -aG audio $USER`）后重新登录。
+- **延迟或掉帧**：减小 `period size` 或尝试 PulseAudio/​PipeWire 以改进缓冲管理。
+
+### 配置技巧
+
+在 `~/.asoundrc` 中将 BlueALSA 设置为默认 PCM，可省去命令中的地址和协议参数：
+
+```text
+pcm.!default {
+  type plug
+  slave.pcm {
+    type bluealsa
+    device "<MAC>"
+    profile "a2dp"
+    interface "hci0"
+  }
+}
+ctl.!default {
+  type bluealsa
+}
+```
