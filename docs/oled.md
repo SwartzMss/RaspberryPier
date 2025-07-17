@@ -58,14 +58,4 @@ with canvas(device) as draw:
 运行脚本即可在 1.3 寸屏幕上看到文字。`luma.oled` 还支持绘制
 图形、显示图片等功能，可根据需要进一步探索。
 
-完整示例脚本可在 [pi5-oled-i2c-tools](https://github.com/SwartzMss/pi5-oled-i2c-tools) 获取。
-
-### 使用仓库示例
-
-克隆仓库后运行其中的 `main.py`，脚本会在屏幕上显示默认的问候语：
-
-```bash
-python3 main.py
-```
-
-如需显示自定义文字，可在 `main.py` 中修改相应字符串后重新执行。
+完整示例脚本可在 [pi5-oled-i2c-tools](https://github.com/SwartzMss/pi5-oled-i2c-tools) 获取
