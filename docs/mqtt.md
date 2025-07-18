@@ -55,3 +55,5 @@ mosquitto_sub -h localhost -t "sensors/#"
 ```
 
 这样就能将多种传感器的结果整合到 MQTT 系统，方便后续在其他设备或云端进行处理。
+
+更多脚本与说明可参考外部仓库 [pi5-mqtt-tools](https://github.com/SwartzMss/pi5-mqtt-tools)。
