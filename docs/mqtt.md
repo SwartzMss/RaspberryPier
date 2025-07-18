@@ -25,6 +25,18 @@ sudo systemctl status mosquitto
 sudo systemctl restart mosquitto
 ```
 
+## 命令行测试
+
+安装 `mosquitto-clients` 后，可直接在终端进行 MQTT 发布和订阅，无需编写额外代码：
+
+```bash
+# 订阅主题
+mosquitto_sub -h 192.168.1.100 -p 1883 -t home/sensor/temperature
+# 发布消息
+mosquitto_pub -h 192.168.1.100 -p 1883 -t home/sensor/temperature \
+             -m '{"temperature":27.5}'
+```
+
 ## 发布传感器数据示例
 
 安装 `paho-mqtt` 库后即可在 Python 中轻松发布数据：
