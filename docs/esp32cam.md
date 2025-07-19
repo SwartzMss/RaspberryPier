@@ -4,8 +4,8 @@ ESP32-CAM 是集成摄像头和 Wi-Fi 功能的低成本开发板，常用于搭
 
 ## 准备工作
 
-1. 在 Arduino IDE 的**首选项**中将 `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json` 添加到“附加开发板管理器网址”。
-2. 打开**开发板管理器**搜索 `esp32` 并安装，在工具菜单中选择“AI Thinker ESP32-CAM”或与你的模组相符的板型。
+1. 在 Arduino IDE 的 **首选项** 中将 `https://espressif.github.io/arduino-esp32/package_esp32_index.json` 添加到 “附加开发板管理器网址”。
+2. 打开**开发板管理器**搜索 `esp32`，在“esp32 by Espressif Systems”那行选择最新版本（如 3.2.1）并点击“安装”，安装完成后在工具菜单中选择“AI Thinker ESP32-CAM”或与你的模组相符的板型。
 3. 使用 USB 转串口模块连接 ESP32-CAM 的 `U0T`、`U0R`、`GND` 与 `5V`，烧录时需将 `IO0` 短接到 `GND` 进入下载模式。
 4. 打开示例 `CameraWebServer`，在代码中填写 Wi-Fi 名称和密码后编译并上传。
 5. 上传成功后断开 `IO0` 的短接并重新上电，在串口监视器中记录分配到的 IP 地址。
