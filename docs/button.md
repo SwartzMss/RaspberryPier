@@ -14,7 +14,7 @@
 
 ```bash
 sudo apt update
-sudo apt install -y pinctrl gpiod
+sudo apt install -y pinctrl 
 ```
 
 ## 使用 shell 命令测试
