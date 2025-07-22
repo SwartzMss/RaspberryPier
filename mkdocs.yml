@@ -15,6 +15,7 @@ nav:
   - GPIO 操作指南: gpio.md
   - 蓝牙配置与数据交换: bluetooth.md
   - 传感器: sensors.md
+  - 按键与开关模块: button.md
   - 脚本系统服务: service.md
   - 蜂鸣器: buzzer.md
   - 电机基础: motors.md
