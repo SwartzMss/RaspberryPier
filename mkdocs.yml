@@ -14,6 +14,7 @@ nav:
   - 树莓派专用命令: commands.md
   - GPIO 操作指南: gpio.md
   - 蓝牙配置与数据交换: bluetooth.md
+  - USB 外置声卡: usb-soundcard.md
   - 传感器: sensors.md
   - 脚本系统服务: service.md
   - 蜂鸣器: buzzer.md

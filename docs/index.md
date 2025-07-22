@@ -11,6 +11,7 @@
 - [nRF24L01 无线模块](./nrf24l01.md)
 - [电机基础](./motors.md)
 - [蜂鸣器使用](./buzzer.md)
+- [USB 外置声卡](./usb-soundcard.md)
 - 硬件监控命令
 - 学习过程中的常用技巧
 - [ESP32-CAM 模块使用](./esp32cam.md)
