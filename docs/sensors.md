@@ -194,4 +194,39 @@ except KeyboardInterrupt:
     lgpio.gpiochip_close(h)
 ```
 
+## HS-SR501 PIR 红外感应模块
+
+被动红外传感器（PIR）可侦测人体或动物移动，HS-SR501 是常见的廉价模块。
+模块上通常带有调整延时与灵敏度的电位计，OUT 引脚在检测到移动时输出高电平。
+
+### 接线示例
+
+- VCC 接 5V（引脚 2 或 4）
+- GND 接 GND（引脚 6）
+- OUT 接 GPIO17（引脚 11）
+
+输出为 3.3V 兼容逻辑电平，因此可直接连接至树莓派 GPIO。
+
+### 示例代码
+
+```python
+import lgpio
+import time
+
+PIR_PIN = 17
+
+h = lgpio.gpiochip_open(0)
+lgpio.gpio_claim_input(h, PIR_PIN)
+
+try:
+    while True:
+        if lgpio.gpio_read(h, PIR_PIN):
+            print("Motion detected!")
+        time.sleep(0.5)
+except KeyboardInterrupt:
+    lgpio.gpiochip_close(h)
+```
+
+更多示例脚本与说明请参阅 [pi5-hs-sr501--tools](https://github.com/SwartzMss/pi5-hs-sr501--tools)。
+
 
