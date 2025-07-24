@@ -19,31 +19,6 @@ sudo apt update
 sudo apt install python3-gpiozero
 ```
 
-如需更高精度的 PWM，可以改用 `pigpio`：
-
-```bash
-sudo apt install pigpio python3-pigpio
-sudo systemctl start pigpiod
-```
-
-## gpiozero 示例
-
-```python
-from gpiozero import Servo
-from time import sleep
-
-servo = Servo(18)
-
-while True:
-    servo.mid()  # 90°
-    sleep(1)
-    servo.min()  # 0° 左右
-    sleep(1)
-    servo.max()  # 180° 左右
-    sleep(1)
-```
-
-
 ## gpiozero + lgpio 示例
 
 若已安装 `lgpio` 库（可执行 `sudo apt install python3-lgpio`），可以将
