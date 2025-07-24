@@ -82,38 +82,7 @@ except KeyboardInterrupt:
 pi5-ultrasonic-tools)，该仓库已改用 `lgpio` 实现。
 
 
-## MCP3008 模数转换器
-
-树莓派本身没有模拟输入，需要借助外部 ADC 才能读取光敏电阻等模拟传感器。MCP3008 是常见的 10 位、8 通道 ADC，可通过 SPI 与树莓派5 连接。
-它会输出 0~1023 的数字值，`gpiozero` 读取时会缩放为 0.0~1.0 的浮点数。
-
-### 接线示例
-
-- VDD 与 VREF 接 3.3V
-- AGND、DGND 接 GND
-- CLK 接 SCLK（GPIO11，引脚 23）
-- DOUT 接 MISO（GPIO9，引脚 21）
-- DIN 接 MOSI（GPIO10，引脚 19）
-- CS 接 CE0（GPIO8，引脚 24）或 CE1（GPIO7，引脚 26）
-- CH0~CH7 用于连接模拟信号
-
-开启树莓派的 SPI 介面後，即可在 Python 中使用 `gpiozero` 读取 MCP3008 的数据。
-
-### 示例代码
-
-```python
-from gpiozero import MCP3008, LightSensor
-
-adc = MCP3008(channel=0)
-print(adc.value)  # 0.0~1.0 尺度的模拟值
-
-light = LightSensor(channel=0)
-light.when_dark = lambda: print("It's dark")
-light.when_light = lambda: print("It's light")
-```
-
-上述代码展示了直接读取通道 0 的模拟值，以及用 `LightSensor` 这类高级封装读取光敏电阻。`gpiozero` 会选择配置好的 pin factory，因此 Pi5 上的用法与旧款树莓派一致。
-
+有关树莓派常用的 ADC 模块与接线方法，请参阅新增的 [模数转换器](./adc.md) 页面。
 
 ## 光敏电阻（数字检测）
 
