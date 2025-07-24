@@ -21,6 +21,7 @@ nav:
   - 脚本系统服务: service.md
   - 蜂鸣器: buzzer.md
   - 电机基础: motors.md
+  - MG90S 舵机: servo.md
   - nRF24L01 无线模块: nrf24l01.md
   - SH1106 OLED 屏幕: oled.md
   - MQTT 服务器: mqtt.md
