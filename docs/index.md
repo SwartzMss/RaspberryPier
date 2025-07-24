@@ -10,6 +10,7 @@
 - [蓝牙配置与数据交换](./bluetooth.md)
 - [nRF24L01 无线模块](./nrf24l01.md)
 - [电机基础](./motors.md)
+- [MG90S 舵机](./servo.md)
 - [蜂鸣器使用](./buzzer.md)
 - [USB 外置声卡](./usb-soundcard.md)
 - 硬件监控命令
