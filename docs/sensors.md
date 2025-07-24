@@ -207,28 +207,6 @@ except KeyboardInterrupt:
 
 输出为 3.3V 兼容逻辑电平，因此可直接连接至树莓派 GPIO。
 
-### 示例代码
-
-```python
-import lgpio
-import time
-
-PIR_PIN = 17
-
-h = lgpio.gpiochip_open(0)
-lgpio.gpio_claim_input(h, PIR_PIN)
-
-try:
-    while True:
-        if lgpio.gpio_read(h, PIR_PIN):
-            print("Motion detected!")
-        time.sleep(0.5)
-except KeyboardInterrupt:
-    lgpio.gpiochip_close(h)
-```
-
-更多示例脚本与说明请参阅 [pi5-hs-sr501--tools](https://github.com/SwartzMss/pi5-hs-sr501--tools)。
-
 ### SENS 与 TIME 调校要点
 
 旋钮可视作在调节“门卫的警觉程度”与“报警后的冷却时间”。
@@ -258,5 +236,30 @@ except KeyboardInterrupt:
 | 逆时针最低档   | 约 2～3 秒       | 对快速移动非常敏感的场合     | 捕捉高频动作     |
 
 建议从两枚旋钮的中间位置开始，根据误报或漏报情况逐步微调，并记录测试结果以找到最合适的组合。
+
+
+### 示例代码
+
+```python
+import lgpio
+import time
+
+PIR_PIN = 17
+
+h = lgpio.gpiochip_open(0)
+lgpio.gpio_claim_input(h, PIR_PIN)
+
+try:
+    while True:
+        if lgpio.gpio_read(h, PIR_PIN):
+            print("Motion detected!")
+        time.sleep(0.5)
+except KeyboardInterrupt:
+    lgpio.gpiochip_close(h)
+```
+
+更多示例脚本与说明请参阅 [pi5-hs-sr501--tools](https://github.com/SwartzMss/pi5-hs-sr501--tools)。
+
+
 
 
