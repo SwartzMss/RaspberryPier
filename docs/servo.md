@@ -43,27 +43,27 @@ while True:
     sleep(1)
 ```
 
-## RPi.GPIO PWM 示例
+
+## gpiozero + lgpio 示例
+
+若已安装 `lgpio` 库（可执行 `sudo apt install python3-lgpio`），可以将
+`gpiozero` 的 pin factory 切换为 `LGPIOFactory`，以使用 `lgpio` 的 PWM 实现：
 
 ```python
-import RPi.GPIO as GPIO
-import time
+from gpiozero import Device, Servo
+from gpiozero.pins.lgpio import LGPIOFactory
+from time import sleep
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(18, GPIO.OUT)
+Device.pin_factory = LGPIOFactory()
+servo = Servo(18)
 
-pwm = GPIO.PWM(18, 50)  # 50 Hz
-pwm.start(0)
-
-try:
-    while True:
-        for angle in range(0, 181, 30):
-            duty = 2.5 + angle / 18.0
-            pwm.ChangeDutyCycle(duty)
-            time.sleep(0.5)
-finally:
-    pwm.stop()
-    GPIO.cleanup()
+while True:
+    servo.mid()
+    sleep(1)
+    servo.min()
+    sleep(1)
+    servo.max()
+    sleep(1)
 ```
 
 更多脚本与示例可在 [pi5-mg90s-tools](https://github.com/SwartzMss/pi5-mg90s-tools) 仓库获取。
