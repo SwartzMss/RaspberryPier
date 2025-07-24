@@ -16,6 +16,7 @@ nav:
   - 蓝牙配置与数据交换: bluetooth.md
   - USB 外置声卡: usb-soundcard.md
   - 传感器: sensors.md
+  - 模数转换器: adc.md
   - 按键与开关模块: button.md
   - 脚本系统服务: service.md
   - 蜂鸣器: buzzer.md
