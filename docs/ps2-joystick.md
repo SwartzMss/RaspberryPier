@@ -16,6 +16,16 @@ PS2 手柄转接板通常提供以下引脚：
 | CMD     | 命令           | GPIO10 (MOSI) |
 | DAT     | 数据           | GPIO9 (MISO) |
 
+此外，部分转接板还会引出模拟摇杆的 `VRx` 和 `VRy` 两个尖脚，
+若需要读取摇杆的电位，可将它们接到外置 ADC（如 ADS1115）：
+
+```
+VRx -> ADS1115 A0 (P0)
+VRy -> ADS1115 A1 (P1)
+```
+
+随后即可利用 `adafruit-circuitpython-ads1x15` 等库在 Python 中获取摇杆的电压数值。
+
 > 各转接板可能标注 `CS`、`SEL` 等不同名称，可按说明书接线。
 
 ## 安装脚本
