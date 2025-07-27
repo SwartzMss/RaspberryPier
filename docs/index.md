@@ -11,7 +11,7 @@
 - [nRF24L01 无线模块](./nrf24l01.md)
 - [电机基础](./motors.md)
 - [MG90S 舵机](./servo.md)
-- [PS2 手柄工具](./ps2-joystick.md)
+- [PS2 摇杆/手柄](./ps2-joystick.md)
 - [IR38K 红外接收](./irremote.md)
 - [蜂鸣器使用](./buzzer.md)
 - [USB 外置声卡](./usb-soundcard.md)
