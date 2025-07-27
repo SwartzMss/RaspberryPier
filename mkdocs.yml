@@ -22,6 +22,7 @@ nav:
   - 蜂鸣器: buzzer.md
   - 电机基础: motors.md
   - MG90S 舵机: servo.md
+  - PS2 摇杆/手柄: ps2-joystick.md
   - IR38K 红外接收: irremote.md
   - nRF24L01 无线模块: nrf24l01.md
   - SH1106 OLED 屏幕: oled.md
