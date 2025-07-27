@@ -31,29 +31,3 @@ y = AnalogIn(ads, ADS1115.P1)
 print(x.value, y.value)
 ```
 
-## 带 ATT/CLK/CMD/DAT 的手柄
-
-部分转接板会额外提供 `ATT`、`CLK`、`CMD`、`DAT` 等引脚，
-适用于连接完整的 PlayStation 2 手柄。
-推荐参考 [`pi5-ps2-joystick-tools`](https://github.com/SwartzMss/pi5-ps2-joystick-tools)
-仓库中的脚本进行调试，典型接线如下表所示：
-
-| 手柄引脚 | 功能             | 树莓派引脚示例 |
-|---------|----------------|-------------|
-| VCC     | 3.3V 供电       | Pin 1       |
-| GND     | 地             | Pin 6       |
-| ATT     | 片选/ATTENTION | GPIO8 (CE0) |
-| CLK     | 时钟           | GPIO11 (SCLK) |
-| CMD     | 命令           | GPIO10 (MOSI) |
-| DAT     | 数据           | GPIO9 (MISO) |
-
-安装脚本：
-
-```bash
-# git clone https://github.com/SwartzMss/pi5-ps2-joystick-tools
-cd pi5-ps2-joystick-tools
-pip install -r requirements.txt
-```
-执行 `python read_ps2.py` 后即可查看按键与摇杆状态。
-
-关于更多用法，请查阅上游仓库的文档。
