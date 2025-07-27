@@ -54,11 +54,6 @@ print(x.value, y.value)
 cd pi5-ps2-joystick-tools
 pip install -r requirements.txt
 ```
-
-执行 `python read_ps2.py` 后即可查看按键与摇杆状态。示例输出：
-
-```
-LX: 127  LY: 128  RX: 127  RY: 128  Buttons: 0x0000
-```
+执行 `python read_ps2.py` 后即可查看按键与摇杆状态。
 
 关于更多用法，请查阅上游仓库的文档。
