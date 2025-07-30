@@ -1,0 +1,4 @@
+/* Increase content area width for larger tables/charts */
+.wy-nav-content {
+    max-width: 1200px;
+}
