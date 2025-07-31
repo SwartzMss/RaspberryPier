@@ -20,6 +20,7 @@ nav:
   - USB 外置声卡: usb-soundcard.md
   - 传感器: sensors.md
   - 模数转换器: adc.md
+  - 旋转电位器: potentiometer.md
   - 按键与开关模块: button.md
   - 脚本系统服务: service.md
   - 蜂鸣器: buzzer.md
