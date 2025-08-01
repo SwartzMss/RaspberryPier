@@ -19,6 +19,7 @@
 - 学习过程中的常用技巧
 - [ESP32-CAM 模块使用](./esp32cam.md)
 - [ESP32 选型指南](./esp32-selection.md)
+- [Node-RED Web 服务器](./webserver.md)
 
 ## 快速开始
 
