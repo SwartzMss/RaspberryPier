@@ -16,16 +16,16 @@ bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/mast
 
 - **手动启动**：
 
-  ```bash
-  node-red
-  ```
+```bash
+node-red
+```
 
 - **作为服务启动（后台 + 开机自启）**：
 
-  ```bash
-  sudo systemctl enable nodered.service
-  sudo systemctl start  nodered.service
-  ```
+```bash
+sudo systemctl enable nodered.service
+sudo systemctl start  nodered.service
+```
 
 - **访问编辑界面**：在浏览器中打开 `http://<Pi_IP>:1880`
 
@@ -41,9 +41,9 @@ bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/mast
    - **json**：解析字符串为对象。
    - **ui\_chart**：绘制实时折线图。
 3. 连接流程：
-   ```plaintext
-   [mqtt in] → [json] → [ui_chart]
-   ```
+```plaintext
+[mqtt in] → [json] → [ui_chart]
+```
 4. 部署后访问 Dashboard：`http://<Pi_IP>:1880/ui`
 
 ## 常见问题
