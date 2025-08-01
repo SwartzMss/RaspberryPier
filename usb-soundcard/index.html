@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwartzMss.github.io/RaspberryPier/usb-soundcard/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>USB 外置声卡 - RaspberryPier</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "USB \u5916\u7f6e\u58f0\u5361";
+        var mkdocs_page_input_path = "usb-soundcard.md";
+        var mkdocs_page_url = "/RaspberryPier/usb-soundcard/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> RaspberryPier
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pin-layout/">引脚布局</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">树莓派专用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../gpio/">GPIO 操作指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bluetooth/">蓝牙配置与数据交换</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">USB 外置声卡</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">📌 设备识别与确认</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alsa">安装 ALSA 工具</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">🎚 音量控制</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">查看控制项</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">获取当前音量状态</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">设置音量</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">🧪 音频播放测试</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">⚙ 设置默认声卡（可选）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">系统范围（全局）</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_9">用户范围（当前用户）</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#python">🐍 Python 控制示例（可选）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_10">❗ 常见问题排查</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sensors/">传感器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adc/">模数转换器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../potentiometer/">旋转电位器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../button/">按键与开关模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../service/">脚本系统服务</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../buzzer/">蜂鸣器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motors/">电机基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../servo/">MG90S 舵机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ps2-joystick/">PS2 摇杆/手柄</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../irremote/">IR38K 红外接收</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../nrf24l01/">nRF24L01 无线模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../oled/">SH1106 OLED 屏幕</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT 服务器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32cam/">ESP32-CAM 模块使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32-selection/">ESP32 选型指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../webserver/">Node-RED Web 服务器</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">RaspberryPier</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">USB 外置声卡</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="usb">USB 外置声卡使用</h1>
+<p>本文档介绍在 Raspberry Pi 5 上调试 USB 声卡的常用方法与脚本示例。</p>
+<h2 id="_1">📌 设备识别与确认</h2>
+<p>插入声卡后，可通过以下命令查看是否被系统识别：</p>
+<pre><code class="language-bash">lsusb
+aplay -l
+</code></pre>
+<p>示例输出：</p>
+<pre><code class="language-bash">$ lsusb
+Bus 001 Device 002: ID 12d1:0010 Huawei Technologies Co., Ltd. KT USB Audio
+
+$ aplay -l
+card 2: Audio [KT USB Audio], device 0: USB Audio [USB Audio]
+</code></pre>
+<p>若 <code>aplay -l</code> 中出现 <code>USB Audio</code> 字样，说明设备已被正确识别。</p>
+<h2 id="alsa">安装 ALSA 工具</h2>
+<p>若系统尚未安装 <code>alsa-utils</code>，可以执行：</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install -y alsa-utils
+</code></pre>
+<p>安装完成后，可使用 <code>alsamixer</code> 查看并调整音量。</p>
+<h2 id="_2">🎚 音量控制</h2>
+<h3 id="_3">查看控制项</h3>
+<p>确认声卡编号（如 <code>card 2</code>），列出可调节项：</p>
+<pre><code class="language-bash">amixer -c 2 scontrols
+</code></pre>
+<p>输出示例：</p>
+<pre><code>Simple mixer control 'Headphone',0
+</code></pre>
+<h3 id="_4">获取当前音量状态</h3>
+<pre><code class="language-bash">amixer -c 2 sget Headphone
+</code></pre>
+<p>示例输出：</p>
+<pre><code>Front Left: Playback 58 [58%] [-21.00dB] [on]
+Front Right: Playback 58 [58%] [-21.00dB] [on]
+</code></pre>
+<h3 id="_5">设置音量</h3>
+<pre><code class="language-bash">amixer -c 2 sset Headphone 90% unmute
+</code></pre>
+<p>也可使用交互式工具：</p>
+<pre><code class="language-bash">alsamixer -c 2
+</code></pre>
+<h2 id="_6">🧪 音频播放测试</h2>
+<p>安装 <code>mpg123</code> 后播放音频进行验证：</p>
+<pre><code class="language-bash">sudo apt install mpg123
+mpg123 -a hw:2,0 test.mp3
+</code></pre>
+<p>确保声音从 USB 声卡输出。亦可使用 <code>speaker-test</code>：</p>
+<pre><code class="language-bash">speaker-test -c2 -twav
+</code></pre>
+<h2 id="_7">⚙ 设置默认声卡（可选）</h2>
+<p>如需将 USB 声卡设为默认输出设备，可进行全局或用户范围设置。</p>
+<h3 id="_8">系统范围（全局）</h3>
+<p>编辑 <code>/etc/asound.conf</code>：</p>
+<pre><code class="language-conf">defaults.pcm.card 2
+defaults.ctl.card 2
+</code></pre>
+<h3 id="_9">用户范围（当前用户）</h3>
+<p>编辑 <code>~/.asoundrc</code>，内容相同：</p>
+<pre><code class="language-conf">defaults.pcm.card 2
+defaults.ctl.card 2
+</code></pre>
+<p>保存后注销或重启使其生效。</p>
+<h2 id="python">🐍 Python 控制示例（可选）</h2>
+<p>可使用 <code>pyalsaaudio</code> 调节音量：</p>
+<pre><code class="language-python">import alsaaudio
+
+mixer = alsaaudio.Mixer(control=&quot;Headphone&quot;, cardindex=2)
+mixer.setvolume(80)  # 设置音量为 80%
+</code></pre>
+<h2 id="_10">❗ 常见问题排查</h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>建议解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无声音输出</td>
+<td>确保设备未被其他程序占用，且音量未静音</td>
+</tr>
+<tr>
+<td>没有音量控制项</td>
+<td>某些声卡仅支持固定音量或不支持 <code>Master/PCM</code> 控制</td>
+</tr>
+<tr>
+<td>声卡不在默认输出中</td>
+<td>配置 <code>.asoundrc</code> 或使用 <code>-a hw:X,0</code> 手动指定播放</td>
+</tr>
+<tr>
+<td>alsamixer 进入空白界面</td>
+<td>使用正确的 <code>-c</code> 参数（声卡编号）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>更多脚本示例可在 <a href="https://github.com/SwartzMss/pi5-usbaudio-tools">pi5-usbaudio-tools</a> 仓库中找到。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../bluetooth/" class="btn btn-neutral float-left" title="蓝牙配置与数据交换"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../sensors/" class="btn btn-neutral float-right" title="传感器">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../bluetooth/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../sensors/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
