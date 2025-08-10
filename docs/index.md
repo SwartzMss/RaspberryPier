@@ -15,6 +15,7 @@
 - [IR38K 红外接收](./irremote.md)
 - [蜂鸣器使用](./buzzer.md)
 - [USB 外置声卡](./usb-soundcard.md)
+- [Pi5 人脸识别工具](./face-recognition.md)
 - 硬件监控命令
 - 学习过程中的常用技巧
 - [ESP32-CAM 模块使用](./esp32cam.md)
