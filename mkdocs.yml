@@ -18,6 +18,7 @@ nav:
   - GPIO 操作指南: gpio.md
   - 蓝牙配置与数据交换: bluetooth.md
   - USB 外置声卡: usb-soundcard.md
+  - Pi5 人脸识别工具: face-recognition.md
   - 传感器: sensors.md
   - 模数转换器: adc.md
   - 旋转电位器: potentiometer.md
