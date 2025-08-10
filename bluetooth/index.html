@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwartzMss.github.io/RaspberryPier/bluetooth/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>蓝牙配置与数据交换 - RaspberryPier</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u84dd\u7259\u914d\u7f6e\u4e0e\u6570\u636e\u4ea4\u6362";
+        var mkdocs_page_input_path = "bluetooth.md";
+        var mkdocs_page_url = "/RaspberryPier/bluetooth/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> RaspberryPier
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pin-layout/">引脚布局</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">树莓派专用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../gpio/">GPIO 操作指南</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">蓝牙配置与数据交换</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">一、前提条件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">二、安装基础组件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a2dp">三、经典蓝牙（A2DP）音频输出</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">四、安装并配置音频后端</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#python">五、Python 脚本播放示例</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">六、常见故障排除</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">七、配置技巧</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usb-soundcard/">USB 外置声卡</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../face-recognition/">Pi5 人脸识别工具</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sensors/">传感器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adc/">模数转换器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../potentiometer/">旋转电位器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../button/">按键与开关模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../service/">脚本系统服务</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../buzzer/">蜂鸣器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motors/">电机基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../servo/">MG90S 舵机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ps2-joystick/">PS2 摇杆/手柄</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../irremote/">IR38K 红外接收</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../nrf24l01/">nRF24L01 无线模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../oled/">SH1106 OLED 屏幕</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT 服务器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32cam/">ESP32-CAM 模块使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32-selection/">ESP32 选型指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../webserver/">Node-RED Web 服务器</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">RaspberryPier</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">蓝牙配置与数据交换</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="raspberry-pi-5">蓝牙配置与数据交换（Raspberry Pi 5）</h2>
+<p>本文档演示如何在 Raspberry Pi 5 上配置经典蓝牙（A2DP），并将音频推送到小米音箱。</p>
+<hr />
+<h3 id="_1">一、前提条件</h3>
+<ul>
+<li>小米音箱已开启并处于配对模式。</li>
+</ul>
+<hr />
+<h3 id="_2">二、安装基础组件</h3>
+<ol>
+<li>更新系统并安装蓝牙服务：</li>
+</ol>
+<pre><code class="language-bash">sudo apt update
+sudo apt install -y bluez bluetooth
+</code></pre>
+<ol>
+<li>启用并启动蓝牙服务：</li>
+</ol>
+<pre><code class="language-bash">sudo systemctl enable --now bluetooth
+sudo systemctl status bluetooth  # 检查蓝牙服务状态
+</code></pre>
+<hr />
+<h3 id="a2dp">三、经典蓝牙（A2DP）音频输出</h3>
+<ol>
+<li>启动 <code>bluetoothctl</code>：</li>
+</ol>
+<pre><code class="language-bash">bluetoothctl
+</code></pre>
+<ol>
+<li>在交互式命令行依次执行：</li>
+</ol>
+<pre><code class="language-console">[bluetooth]# power on        # 打开蓝牙适配器
+[bluetooth]# agent on        # 启用配对代理
+[bluetooth]# default-agent   # 将其设为默认代理
+[bluetooth]# scan on         # 扫描设备，直到看到小爱音箱的 MAC 地址
+</code></pre>
+<ol>
+<li>配对并信任设备：</li>
+</ol>
+<pre><code class="language-bash">pair &lt;MAC&gt;      # 配对
+trust &lt;MAC&gt;     # 信任
+connect &lt;MAC&gt;   # 连接
+</code></pre>
+<ol>
+<li>设置默认音频输出：</li>
+</ol>
+<pre><code class="language-bash">pactl list sinks                    # 列出所有输出设备
+pactl set-default-sink &lt;Sink_Name&gt;  # 将蓝牙音箱设为默认
+</code></pre>
+<ol>
+<li>测试播放：</li>
+</ol>
+<pre><code class="language-bash">sudo apt install -y sox libsox-fmt-mp3
+play -n synth 3 sine 440           # 播放3秒440Hz正弦波
+</code></pre>
+<hr />
+<h3 id="_3">四、安装并配置音频后端</h3>
+<p>本指南仅支持 <strong>BlueALSA</strong>。  </p>
+<ol>
+<li>安装 BlueALSA 及相关工具：</li>
+</ol>
+<pre><code class="language-bash">sudo apt update
+sudo apt install -y bluealsa alsa-utils
+</code></pre>
+<ol>
+<li>启用并启动 BlueALSA 服务：</li>
+</ol>
+<pre><code class="language-bash">sudo systemctl enable --now bluealsa
+</code></pre>
+<ol>
+<li>使用 BlueALSA 播放示例：</li>
+</ol>
+<pre><code class="language-bash">aplay -D bluealsa:HCI=hci0,DEV=&lt;MAC&gt;,PROFILE=a2dp sample.wav
+mpg123 -a bluealsa:HCI=hci0,DEV=&lt;MAC&gt;,PROFILE=a2dp sample.mp3
+</code></pre>
+<hr />
+<h3 id="python">五、Python 脚本播放示例</h3>
+<ol>
+<li>安装 Python ALSA 支持：</li>
+</ol>
+<pre><code class="language-bash">sudo apt install -y python3-alsaaudio
+</code></pre>
+<ol>
+<li>运行示例脚本：</li>
+</ol>
+<pre><code class="language-bash">python3 main.py /home/pi/Music/song.wav bluealsa:HCI=hci0,DEV=&lt;MAC&gt;,PROFILE=a2dp
+</code></pre>
+<ol>
+<li>在自定义脚本中调用：</li>
+</ol>
+<pre><code class="language-python">from bluealsa_player import play_wav_via_bluealsa
+play_wav_via_bluealsa(
+    '/home/pi/Music/song.wav',
+    'bluealsa:HCI=hci0,DEV=&lt;MAC&gt;,PROFILE=a2dp'
+)
+</code></pre>
+<hr />
+<h3 id="_4">六、常见故障排除</h3>
+<ul>
+<li><strong>无声音</strong>：</li>
+<li>检查连接状态：<code>bluetoothctl info &lt;MAC&gt;</code>。</li>
+<li>确认 Sink 已设置为默认：<code>pactl info</code>。</li>
+<li><strong>权限错误</strong>：</li>
+<li>将用户加入 <code>audio</code> 组并重启：</li>
+</ul>
+<pre><code class="language-bash">sudo usermod -aG audio $USER &amp;&amp; reboot
+</code></pre>
+<ul>
+<li><strong>延迟或掉帧</strong>：</li>
+<li>尝试减小 ALSA <code>period size</code>，或切换到 PulseAudio/PipeWire。</li>
+</ul>
+<hr />
+<h3 id="_5">七、配置技巧</h3>
+<p>通过在 <code>~/.asoundrc</code> 中将 BlueALSA 设置为默认 PCM，可以在播放音频时省去指定 MAC 地址 和 协议 的步骤，命令变得更简洁。例如：</p>
+<pre><code class="language-text">pcm.!default {
+  type plug
+  slave.pcm {
+    type bluealsa
+    device &quot;&lt;MAC&gt;&quot;
+    profile &quot;a2dp&quot;
+    interface &quot;hci0&quot;
+  }
+}
+ctl.!default {
+  type bluealsa
+}
+</code></pre>
+<p>配置完成后，只需直接执行：</p>
+<pre><code class="language-bash">aplay sample.wav
+mpg123 sample.mp3
+</code></pre>
+<hr />
+<p>详细参考(<a href="https://github.com/SwartzMss/pi5-bluetooth-tools">https://github.com/SwartzMss/pi5-bluetooth-tools</a>)</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../gpio/" class="btn btn-neutral float-left" title="GPIO 操作指南"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../usb-soundcard/" class="btn btn-neutral float-right" title="USB 外置声卡">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../gpio/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../usb-soundcard/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

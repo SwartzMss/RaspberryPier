@@ -1,0 +1,12 @@
+/* Increase content area width for larger tables/charts */
+.wy-nav-content {
+    /* Allow the content to stretch to the browser width */
+    max-width: 100%;
+}
+
+@media (min-width: 1800px) {
+    /* On very wide screens cap the width so lines don't become too long */
+    .wy-nav-content {
+        max-width: 1800px;
+    }
+}

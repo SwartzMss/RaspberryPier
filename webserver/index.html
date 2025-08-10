@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwartzMss.github.io/RaspberryPier/webserver/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Node-RED Web 服务器 - RaspberryPier</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Node-RED Web \u670d\u52a1\u5668";
+        var mkdocs_page_input_path = "webserver.md";
+        var mkdocs_page_url = "/RaspberryPier/webserver/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> RaspberryPier
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pin-layout/">引脚布局</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">树莓派专用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../gpio/">GPIO 操作指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bluetooth/">蓝牙配置与数据交换</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usb-soundcard/">USB 外置声卡</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../face-recognition/">Pi5 人脸识别工具</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sensors/">传感器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adc/">模数转换器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../potentiometer/">旋转电位器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../button/">按键与开关模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../service/">脚本系统服务</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../buzzer/">蜂鸣器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motors/">电机基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../servo/">MG90S 舵机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ps2-joystick/">PS2 摇杆/手柄</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../irremote/">IR38K 红外接收</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../nrf24l01/">nRF24L01 无线模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../oled/">SH1106 OLED 屏幕</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT 服务器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32cam/">ESP32-CAM 模块使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32-selection/">ESP32 选型指南</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Node-RED Web 服务器</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">简介</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#node-red">安装 Node-RED</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">启动与访问</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mqtt">结合 MQTT 可视化传感器数据</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#node-red-dashboard">Node-RED Dashboard 可视化</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">常见问题</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">参考资料</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">RaspberryPier</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Node-RED Web 服务器</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="node-red-web">Node-RED Web 服务器搭建与可视化指南</h1>
+<h2 id="_1">简介</h2>
+<p>Node-RED 是一款基于 Node.js 的流程编程工具，通过拖拽节点即可构建物联网应用、Web API、数据可视化等服务。本指南基于 Raspberry Pi 5 展示如何快速安装、运行 Node-RED，并结合 MQTT 实现传感器数据的实时与历史可视化。</p>
+<h2 id="node-red">安装 Node-RED</h2>
+<p>使用官方一键脚本快速安装 Node.js 和 Node-RED：</p>
+<pre><code class="language-bash">bash &lt;(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+</code></pre>
+<h2 id="_2">启动与访问</h2>
+<ul>
+<li><strong>手动启动</strong>：</li>
+</ul>
+<pre><code class="language-bash">node-red
+</code></pre>
+<ul>
+<li><strong>作为服务启动（后台 + 开机自启）</strong>：</li>
+</ul>
+<pre><code class="language-bash">sudo systemctl enable nodered.service
+sudo systemctl start  nodered.service
+</code></pre>
+<ul>
+<li><strong>访问编辑界面</strong>：在浏览器中打开 <code>http://&lt;Pi_IP&gt;:1880</code></li>
+</ul>
+<h2 id="mqtt">结合 MQTT 可视化传感器数据</h2>
+<p>本节示例：使用 DHT22 采集温湿度，通过 MQTT 发布，并在 Node-RED Dashboard 中绘制实时曲线。</p>
+<h3 id="node-red-dashboard">Node-RED Dashboard 可视化</h3>
+<ol>
+<li>安装 Dashboard 插件：编辑界面右上 ☰ → <strong>Manage palette</strong> → <strong>Install</strong> → 搜索 <code>node-red-dashboard</code> → <strong>Install</strong>。</li>
+<li>拖入并配置节点：</li>
+<li><strong>mqtt in</strong>：订阅 <code>sensors/dht22</code>，输出 JSON 对象到 <code>msg.payload</code>。</li>
+<li><strong>json</strong>：解析字符串为对象。</li>
+<li><strong>ui_chart</strong>：绘制实时折线图。</li>
+<li>连接流程：</li>
+</ol>
+<pre><code class="language-plaintext">[mqtt in] → [json] → [ui_chart]
+</code></pre>
+<ol>
+<li>部署后访问 Dashboard：<code>http://&lt;Pi_IP&gt;:1880/ui</code></li>
+</ol>
+<h2 id="_3">常见问题</h2>
+<ul>
+<li><strong>Node-RED 无法启动</strong>：检查日志 <code>journalctl -u nodered.service</code>，排查端口冲突或版本问题。</li>
+<li><strong>Dashboard 无数据显示</strong>：确认 MQTT Broker 运行正常、主题一致，并且消息为合法 JSON。</li>
+<li><strong>数据频率过高</strong>：可调整 MQTT QoS，或结合 InfluxDB 做持久化和查询。</li>
+</ul>
+<h2 id="_4">参考资料</h2>
+<ul>
+<li>Node-RED 官方文档：<a href="https://nodered.org/docs/">https://nodered.org/docs/</a></li>
+<li>Node-RED Dashboard：<a href="https://flows.nodered.org/node/node-red-dashboard">https://flows.nodered.org/node/node-red-dashboard</a></li>
+<li>Adafruit DHT22 Python 库：<a href="https://github.com/adafruit/Adafruit_Python_DHT">https://github.com/adafruit/Adafruit_Python_DHT</a></li>
+<li>Paho MQTT Python：<a href="https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php">https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../esp32-selection/" class="btn btn-neutral float-left" title="ESP32 选型指南"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../esp32-selection/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

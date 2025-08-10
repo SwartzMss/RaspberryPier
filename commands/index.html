@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwartzMss.github.io/RaspberryPier/commands/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>树莓派专用命令 - RaspberryPier</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u6811\u8393\u6d3e\u4e13\u7528\u547d\u4ee4";
+        var mkdocs_page_input_path = "commands.md";
+        var mkdocs_page_url = "/RaspberryPier/commands/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> RaspberryPier
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pin-layout/">引脚布局</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">树莓派专用命令</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1">1. 硬件信息</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2">2. 树莓派配置</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-gpio">3. GPIO 操作</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4">4. 摄像头相关</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5">5. 显示器配置</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6">6. 音频相关</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7">7. 系统监控</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../gpio/">GPIO 操作指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bluetooth/">蓝牙配置与数据交换</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usb-soundcard/">USB 外置声卡</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../face-recognition/">Pi5 人脸识别工具</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sensors/">传感器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adc/">模数转换器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../potentiometer/">旋转电位器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../button/">按键与开关模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../service/">脚本系统服务</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../buzzer/">蜂鸣器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motors/">电机基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../servo/">MG90S 舵机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ps2-joystick/">PS2 摇杆/手柄</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../irremote/">IR38K 红外接收</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../nrf24l01/">nRF24L01 无线模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../oled/">SH1106 OLED 屏幕</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT 服务器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32cam/">ESP32-CAM 模块使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32-selection/">ESP32 选型指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../webserver/">Node-RED Web 服务器</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">RaspberryPier</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">树莓派专用命令</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">树莓派专用命令</h1>
+<h2 id="1">1. 硬件信息</h2>
+<pre><code class="language-bash">vcgencmd measure_temp           # 查看CPU温度
+vcgencmd get_mem arm           # 查看ARM内存分配
+vcgencmd get_mem gpu           # 查看GPU内存分配
+vcgencmd measure_volts core    # 查看核心电压
+vcgencmd measure_volts sdram_c # 查看SDRAM电压
+vcgencmd measure_clock arm     # 查看ARM时钟频率
+vcgencmd measure_clock core    # 查看核心时钟频率
+vcgencmd measure_clock h264    # 查看H264时钟频率
+vcgencmd measure_clock isp     # 查看ISP时钟频率
+vcgencmd measure_clock v3d     # 查看V3D时钟频率
+vcgencmd measure_clock uart    # 查看UART时钟频率
+vcgencmd measure_clock pwm     # 查看PWM时钟频率
+vcgencmd measure_clock emmc    # 查看EMMC时钟频率
+vcgencmd measure_clock pixel   # 查看像素时钟频率
+vcgencmd measure_clock vec     # 查看VEC时钟频率
+vcgencmd measure_clock hdmi    # 查看HDMI时钟频率
+vcgencmd measure_clock dpi     # 查看DPI时钟频率
+</code></pre>
+<h2 id="2">2. 树莓派配置</h2>
+<pre><code class="language-bash">raspi-config                    # 树莓派配置工具
+sudo raspi-config              # 以管理员身份运行配置工具
+</code></pre>
+<h2 id="3-gpio">3. GPIO 操作</h2>
+<pre><code class="language-bash">gpio readall                   # 查看GPIO引脚状态（WiringPi）
+gpio mode 18 out               # 设置GPIO18为输出模式
+gpio write 18 1                # 设置GPIO18为高电平
+gpio write 18 0                # 设置GPIO18为低电平
+gpio read 18                   # 读取GPIO18状态
+</code></pre>
+<h2 id="4">4. 摄像头相关</h2>
+<pre><code class="language-bash"># 新版命令（树莓派5）
+rpicam-hello                    # 测试摄像头连接
+rpicam-still -o image.jpg      # 拍照并保存为image.jpg
+rpicam-still -t 5000 -o image.jpg # 5秒后拍照
+rpicam-vid -o video.h264       # 录制视频
+rpicam-vid -t 10000 -o video.h264 # 录制10秒视频
+</code></pre>
+<h2 id="5">5. 显示器配置</h2>
+<pre><code class="language-bash">tvservice -s                   # 查看显示器状态
+tvservice -o                   # 关闭显示器
+tvservice -p                   # 打开显示器
+tvservice -m CEA               # 列出CEA模式
+tvservice -m DMT               # 列出DMT模式
+</code></pre>
+<h2 id="6">6. 音频相关</h2>
+<pre><code class="language-bash">amixer scontrols               # 列出音频控制
+amixer sset 'Master' 80%       # 设置主音量80%
+amixer sset 'PCM' 90%          # 设置PCM音量90%
+</code></pre>
+<h2 id="7">7. 系统监控</h2>
+<pre><code class="language-bash">vcgencmd get_throttled         # 查看节流状态
+vcgencmd get_config str        # 查看配置字符串
+vcgencmd get_config int        # 查看配置整数
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../pin-layout/" class="btn btn-neutral float-left" title="引脚布局"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../gpio/" class="btn btn-neutral float-right" title="GPIO 操作指南">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../pin-layout/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../gpio/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

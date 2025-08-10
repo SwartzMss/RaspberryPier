@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwartzMss.github.io/RaspberryPier/motors/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>电机基础 - RaspberryPier</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u7535\u673a\u57fa\u7840";
+        var mkdocs_page_input_path = "motors.md";
+        var mkdocs_page_url = "/RaspberryPier/motors/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> RaspberryPier
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pin-layout/">引脚布局</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">树莓派专用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../gpio/">GPIO 操作指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bluetooth/">蓝牙配置与数据交换</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usb-soundcard/">USB 外置声卡</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../face-recognition/">Pi5 人脸识别工具</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sensors/">传感器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adc/">模数转换器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../potentiometer/">旋转电位器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../button/">按键与开关模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../service/">脚本系统服务</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../buzzer/">蜂鸣器</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">电机基础</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">直流电机</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">步进电机</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">单极步进电机</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">双极步进电机</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">小结</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../servo/">MG90S 舵机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ps2-joystick/">PS2 摇杆/手柄</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../irremote/">IR38K 红外接收</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../nrf24l01/">nRF24L01 无线模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../oled/">SH1106 OLED 屏幕</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT 服务器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32cam/">ESP32-CAM 模块使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32-selection/">ESP32 选型指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../webserver/">Node-RED Web 服务器</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">RaspberryPier</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">电机基础</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">电机基础</h1>
+<p>树莓派可以通过各类驱动板控制不同类型的电机，常见的有直流电机和步进电机。本文件对二者做一个简要介绍，帮助初学者了解它们的特性和应用场景。</p>
+<h2 id="_2">直流电机</h2>
+<p>直流电机（DC Motor）以连续旋转的方式工作，输入电压越高转速越快。由于启动和停止都比较迅速，通常用于小车驱动、风扇等需要持续旋转的场合。直流电机本身只能简单地正转或反转，如需调节速度或方向，通常要配合 H 桥电路或专门的驱动板，例如 L298N、TB6612 等。</p>
+<p><strong>控制要点：</strong></p>
+<ul>
+<li>通过 PWM 调节转速，脉宽占空比越高，电机转速越快。</li>
+<li>如需反转，需要改变电机两端的电压极性，通常由驱动芯片完成。</li>
+<li>电机启动时会产生较大的浪涌电流，建议使用额外的电源而非直接从树莓派 GPIO 取电。</li>
+</ul>
+<h2 id="_3">步进电机</h2>
+<p>步进电机（Stepper Motor）通过分步驱动产生可控的角度位移，常用于需要精确定位的场合，例如机械臂、3D 打印机或摄像平台。根据绕组连接方式不同，可分为单极型与双极型，常见的驱动板有 ULN2003、A4988 等。</p>
+<h3 id="_4">单极步进电机</h3>
+<p>单极电机的每相线圈中都带有中心抽头，因而通常有 5 或 6 根引线。经典型号如 28BYJ-48，可搭配 ULN2003 驱动板。</p>
+<ul>
+<li>驱动板提供达林顿管阵列，可直接连接树莓派的 4 个控制引脚。</li>
+<li>中心抽头与电源相连，适合电流较小、成本较低的场合。</li>
+</ul>
+<h3 id="_5">双极步进电机</h3>
+<p>双极电机没有中心抽头，一般只有 4 根引线，需要完整的 H 桥驱动。常配合 A4988、DRV8825 等模块。</p>
+<ul>
+<li>模块具备电流限制及细分步进功能，可提供更高的扭矩与更平滑的运动。</li>
+<li>适用于 3D 打印机、CNC 等对动力有较高要求的设备。</li>
+</ul>
+<p><strong>控制要点：</strong></p>
+<ul>
+<li>按固定顺序激励线圈即可得到稳定步进，每一步的角度通常为 1.8° 或 0.9° 等固定值。</li>
+<li>可以通过细分驱动获得更高的角度分辨率，但会牺牲扭矩。</li>
+<li>与直流电机相比，步进电机在高速时扭矩会明显下降，因此应根据负载选择合适的驱动电压和细分设置。</li>
+</ul>
+<h2 id="_6">小结</h2>
+<p>直流电机适合需要高速连续旋转的应用；步进电机适合需要精准控制位置或速度的场合。在使用树莓派控制电机时，务必通过合适的驱动电路隔离 GPIO 与高电流设备，以免对树莓派造成损害。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../buzzer/" class="btn btn-neutral float-left" title="蜂鸣器"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../servo/" class="btn btn-neutral float-right" title="MG90S 舵机">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../buzzer/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../servo/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwartzMss.github.io/RaspberryPier/oled/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>SH1106 OLED 屏幕 - RaspberryPier</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SH1106 OLED \u5c4f\u5e55";
+        var mkdocs_page_input_path = "oled.md";
+        var mkdocs_page_url = "/RaspberryPier/oled/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> RaspberryPier
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pin-layout/">引脚布局</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">树莓派专用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../gpio/">GPIO 操作指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bluetooth/">蓝牙配置与数据交换</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usb-soundcard/">USB 外置声卡</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../face-recognition/">Pi5 人脸识别工具</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sensors/">传感器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adc/">模数转换器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../potentiometer/">旋转电位器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../button/">按键与开关模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../service/">脚本系统服务</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../buzzer/">蜂鸣器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motors/">电机基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../servo/">MG90S 舵机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ps2-joystick/">PS2 摇杆/手柄</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../irremote/">IR38K 红外接收</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../nrf24l01/">nRF24L01 无线模块</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">SH1106 OLED 屏幕</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">接线</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#i2c">查找 I2C 接口与地址</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">安装依赖</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">示例代码</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT 服务器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32cam/">ESP32-CAM 模块使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32-selection/">ESP32 选型指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../webserver/">Node-RED Web 服务器</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">RaspberryPier</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">SH1106 OLED 屏幕</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="13-sh1106-oled">1.3寸 SH1106 OLED 显示屏</h1>
+<p>1.3寸 OLED 屏幕常用 SH1106 控制芯片，可通过 I2C 与树莓派5 连接。
+本文档简要说明接线方法与在 Python 中显示文本的示例代码。</p>
+<h2 id="_1">接线</h2>
+<ul>
+<li>VCC 接 3.3V（引脚 1）</li>
+<li>GND 接 GND（引脚 6）</li>
+<li>SCL 接 GPIO3（SCL，引脚 5）</li>
+<li>SDA 接 GPIO2（SDA，引脚 3）</li>
+</ul>
+<p>确保在 <code>raspi-config</code> 中启用 I2C 接口。</p>
+<h3 id="i2c">查找 I2C 接口与地址</h3>
+<p>通过在终端执行 <code>pinout</code> 命令可以查看树莓派的引脚分布，确认 GPIO2/3 分别
+对应 SDA 与 SCL。如果系统未安装该命令，可执行 <code>sudo apt install -y
+gpiozero</code>（或 <code>sudo apt install -y python3-gpiozero</code>）获取。</p>
+<p>连接好硬件并启用 I2C 后，推荐安装 <code>i2c-tools</code> 用于检测设备地址：</p>
+<pre><code class="language-bash">sudo apt install -y i2c-tools
+i2cdetect -y 1
+</code></pre>
+<p>在扫描结果中通常会看到 <code>0x3C</code>，即 SH1106 模块的默认地址，之后在代码中
+应以此地址初始化设备。</p>
+<h2 id="_2">安装依赖</h2>
+<p>推荐使用 <code>luma.oled</code> 库控制 SH1106 屏幕：</p>
+<pre><code class="language-bash">pip install luma.oled
+</code></pre>
+<h2 id="_3">示例代码</h2>
+<p>以下 Python 脚本在屏幕上显示一行文字：</p>
+<pre><code class="language-python">from luma.core.interface.serial import i2c
+from luma.oled.device import sh1106
+from luma.core.render import canvas
+from PIL import ImageFont
+
+serial = i2c(port=1, address=0x3C)
+device = sh1106(serial)
+
+font = ImageFont.load_default()
+
+with canvas(device) as draw:
+    draw.text((0, 0), &quot;Hello, OLED!&quot;, font=font, fill=255)
+</code></pre>
+<p>运行脚本即可在 1.3 寸屏幕上看到文字。<code>luma.oled</code> 还支持绘制
+图形、显示图片等功能，可根据需要进一步探索。</p>
+<p>完整示例脚本可在 <a href="https://github.com/SwartzMss/pi5-oled-i2c-tools">pi5-oled-i2c-tools</a> 获取</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../nrf24l01/" class="btn btn-neutral float-left" title="nRF24L01 无线模块"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mqtt/" class="btn btn-neutral float-right" title="MQTT 服务器">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../nrf24l01/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../mqtt/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

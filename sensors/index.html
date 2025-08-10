@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwartzMss.github.io/RaspberryPier/sensors/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>传感器 - RaspberryPier</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u4f20\u611f\u5668";
+        var mkdocs_page_input_path = "sensors.md";
+        var mkdocs_page_url = "/RaspberryPier/sensors/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> RaspberryPier
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pin-layout/">引脚布局</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">树莓派专用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../gpio/">GPIO 操作指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bluetooth/">蓝牙配置与数据交换</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usb-soundcard/">USB 外置声卡</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../face-recognition/">Pi5 人脸识别工具</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">传感器</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dht22">DHT22 温湿度传感器</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hc-sr04">HC-SR04 超声波测距模块</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">光敏电阻（数字检测）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ky-038">声音传感器 (KY-038)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">接线示例</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">示例代码</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#d0">D0 数字输出示例</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hs-sr501-pir">HS-SR501 PIR 红外感应模块</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">接线示例</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sens-time">SENS 与 TIME 调校要点</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#sens">SENS：调节警觉程度</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#time">TIME：冷却/锁存时间</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">示例代码</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adc/">模数转换器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../potentiometer/">旋转电位器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../button/">按键与开关模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../service/">脚本系统服务</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../buzzer/">蜂鸣器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motors/">电机基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../servo/">MG90S 舵机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ps2-joystick/">PS2 摇杆/手柄</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../irremote/">IR38K 红外接收</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../nrf24l01/">nRF24L01 无线模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../oled/">SH1106 OLED 屏幕</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT 服务器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32cam/">ESP32-CAM 模块使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32-selection/">ESP32 选型指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../webserver/">Node-RED Web 服务器</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">RaspberryPier</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">传感器</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sensors">Sensors</h1>
+<p>Raspberry Pi 5 supports a variety of sensors to extend its capabilities. This document provides an overview of how to connect and read common sensors.</p>
+<h2 id="dht22">DHT22 温湿度传感器</h2>
+<p>DHT22 是常见的温湿度传感器，适合直接连接到树莓派的 GPIO 引脚。推荐接线如下：</p>
+<ul>
+<li>VCC 接 3.3V（引脚 1）</li>
+<li>GND 接 GND（引脚 6）</li>
+<li>DATA 接 GPIO4（引脚 7）</li>
+<li>在 VCC 与 DATA 之间串联一个 4.7k～10kΩ 的上拉电阻</li>
+</ul>
+<p>使用 <code>Adafruit_DHT</code> 库可以读取温度和湿度，示例代码如下：</p>
+<pre><code class="language-python">import Adafruit_DHT
+
+sensor = Adafruit_DHT.DHT22
+pin = 4  # DATA 对应的 BCM 编号
+
+humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+if humidity is not None and temperature is not None:
+    print(f&quot;Temp: {temperature:.1f}°C  Humidity: {humidity:.1f}%&quot;)
+else:
+    print(&quot;Sensor failure. Check wiring.&quot;)
+</code></pre>
+<p>更多高级用法可以参考外部仓库 <a href="https://github.com/SwartzMss/pi5-dht22-tools">pi5-dht22-tools</a>。</p>
+<h2 id="hc-sr04">HC-SR04 超声波测距模块</h2>
+<p>HC-SR04 用于测量距离，需要 TRIG 与 ECHO 两个控制引脚，推荐接线如下：</p>
+<ul>
+<li>VCC 接 5V（引脚 2 或 4）</li>
+<li>GND 接 GND（引脚 6）</li>
+<li>TRIG 接 GPIO23（引脚 16）</li>
+<li>ECHO 经电阻分压后接 GPIO24（引脚 18）</li>
+</ul>
+<p>下面是基于 <code>lgpio</code> 的示例代码：</p>
+<pre><code class="language-python">import lgpio
+import time
+
+TRIG = 23
+ECHO = 24
+
+# 打开第 0 号 gpiochip
+h = lgpio.gpiochip_open(0)
+lgpio.gpio_claim_output(h, TRIG)
+lgpio.gpio_claim_input(h, ECHO)
+
+def read_distance():
+    lgpio.gpio_write(h, TRIG, 0)
+    time.sleep(0.05)
+
+    lgpio.gpio_write(h, TRIG, 1)
+    time.sleep(0.00001)
+    lgpio.gpio_write(h, TRIG, 0)
+
+    while lgpio.gpio_read(h, ECHO) == 0:
+        start = time.time()
+
+    while lgpio.gpio_read(h, ECHO) == 1:
+        end = time.time()
+
+    duration = end - start
+    distance = duration * 17150
+    return distance
+
+try:
+    while True:
+        dist = read_distance()
+        print(f&quot;Distance: {dist:.2f} cm&quot;)
+        time.sleep(1)
+except KeyboardInterrupt:
+    lgpio.gpiochip_close(h)
+</code></pre>
+<p>更多脚本与说明请参考 <a href="https://github.com/SwartzMss/
+pi5-ultrasonic-tools">pi5-ultrasonic-tools</a>，该仓库已改用 <code>lgpio</code> 实现。</p>
+<p>有关树莓派常用的 ADC 模块与接线方法，请参阅新增的 <a href="../adc/">模数转换器</a> 页面。</p>
+<h2 id="_1">光敏电阻（数字检测）</h2>
+<p>如果暂时没有 ADC 模块，可以将光敏电阻当作二值开关使用。将传感器一端接 3.3V，另一端接到 GPIO17，并在程序中启用下拉电阻。亮度高时电压被拉高，读取到逻辑 1；亮度低时下拉电阻使其变为逻辑 0。以下示例使用 <code>lgpio</code> 读取电平：</p>
+<pre><code class="language-python">import lgpio
+import time
+
+LDR_PIN = 17
+
+# 打开第 0 号 gpiochip
+h = lgpio.gpiochip_open(0)
+lgpio.gpio_claim_input(h, LDR_PIN, lgpio.SET_BIAS_PULL_DOWN)
+
+try:
+    while True:
+        if lgpio.gpio_read(h, LDR_PIN):
+            print(&quot;Bright&quot;)
+        else:
+            print(&quot;Dark&quot;)
+        time.sleep(1)
+except KeyboardInterrupt:
+    lgpio.gpiochip_close(h)
+</code></pre>
+<p>这种方法只能粗略地区分明暗，但足以在没有模数转换器的情况下测试光敏电阻。</p>
+<p>更多脚本与说明请参考 <a href="https://github.com/SwartzMss/pi5-photoresistor-tools">pi5-photoresistor-tools</a>。</p>
+<h2 id="ky-038">声音传感器 (KY-038)</h2>
+<p>KY-038 或 KY-037 等声音传感器可侦测环境中的噪音强度，通常同时提供模拟 (A0) 与数字 (D0) 输出。如果只需判断是否有较大的声音，可直接读取 D0；若要量化声音幅度，则需将 A0 接至 MCP3008 等 ADC 模块。</p>
+<h3 id="_2">接线示例</h3>
+<ul>
+<li>VCC 接 3.3V</li>
+<li>GND 接 GND</li>
+<li>A0 接 MCP3008 的 CH0</li>
+<li>D0 可接任意 GPIO，用于阈值触发 (可选)</li>
+</ul>
+<h3 id="_3">示例代码</h3>
+<pre><code class="language-python">from gpiozero import SoundSensor
+
+mic = SoundSensor(channel=0)  # 读取 MCP3008 通道 0 的模拟值
+
+while True:
+    mic.wait_for_sound()
+    print(&quot;Sound detected!&quot;)
+</code></pre>
+<p>上述示例在声音达到阈值时打印提示，可通过 <code>threshold</code> 属性调整灵敏度。</p>
+<p>更多脚本与说明请参考 <a href="https://github.com/SwartzMss/pi5-soundsensor-tools">pi5-soundsensor-tools</a>。</p>
+<h3 id="d0">D0 数字输出示例</h3>
+<p>如果没有 ADC，仅需侦测是否出现噪音，可直接读取模块的 D0 引脚：</p>
+<pre><code class="language-python">import lgpio
+import time
+
+MIC_PIN = 17  # D0 所连接的 BCM 编号
+
+# 打开第 0 号 gpiochip，并声明输入
+h = lgpio.gpiochip_open(0)
+lgpio.gpio_claim_input(h, MIC_PIN)
+
+try:
+    while True:
+        if lgpio.gpio_read(h, MIC_PIN):
+            print(&quot;Noise detected!&quot;)
+        time.sleep(0.1)
+except KeyboardInterrupt:
+    lgpio.gpiochip_close(h)
+</code></pre>
+<h2 id="hs-sr501-pir">HS-SR501 PIR 红外感应模块</h2>
+<p>被动红外传感器（PIR）可侦测人体或动物移动，HS-SR501 是常见的廉价模块。
+模块上通常带有调整延时与灵敏度的电位计，OUT 引脚在检测到移动时输出高电平。</p>
+<h3 id="_4">接线示例</h3>
+<ul>
+<li>VCC 接 5V（引脚 2 或 4）</li>
+<li>GND 接 GND（引脚 6）</li>
+<li>OUT 接 GPIO17（引脚 11）</li>
+</ul>
+<p>输出为 3.3V 兼容逻辑电平，因此可直接连接至树莓派 GPIO。</p>
+<h3 id="sens-time">SENS 与 TIME 调校要点</h3>
+<p>旋钮可视作在调节“门卫的警觉程度”与“报警后的冷却时间”。</p>
+<h4 id="sens">SENS：调节警觉程度</h4>
+<ul>
+<li><code>SENS</code> 实际上控制比较器阈值。顺时针阈值降低、灵敏度提升，能感应更远但更易受环境干扰；逆时针阈值升高，可减少误报，但过低时可能漏报远处或轻微的动作。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>旋钮位置</th>
+<th>阈值</th>
+<th>检测距离</th>
+<th>常见表现</th>
+<th>精度特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>顺时针极限</td>
+<td>最低阈值</td>
+<td>最远</td>
+<td>远处轻微动作即触发</td>
+<td>捕捉率高但误报增多</td>
+</tr>
+<tr>
+<td>中间位置</td>
+<td>中等阈值</td>
+<td>中等</td>
+<td>日常走动可靠触发</td>
+<td>捕捉率和误报较平衡</td>
+</tr>
+<tr>
+<td>逆时针极限</td>
+<td>最高阈值</td>
+<td>最近</td>
+<td>只有非常靠近、明显的动作才触发</td>
+<td>误报极少但容易漏报</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>室内小空间（玄关、书房等）可适当降低灵敏度，避免频繁误触；</li>
+<li>开阔走廊、车库或庭院可提高灵敏度，以扩大监测范围。</li>
+</ul>
+<h4 id="time">TIME：冷却/锁存时间</h4>
+<ul>
+<li><code>TIME</code> 决定触发后 OUT 引脚保持高电平的时长。该期间模块不会再次触发。</li>
+<li>时间越长，报警次数减少；时间越短，可更快响应下一次动作。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>TIME 位置</th>
+<th>锁存时间</th>
+<th>应用场景示例</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>顺时针最高档</td>
+<td>约 5 分钟</td>
+<td>长时间有人活动但无需重复提醒</td>
+<td>减少重复触发</td>
+</tr>
+<tr>
+<td>中间位置</td>
+<td>约 30 秒～1 分钟</td>
+<td>门口或客厅有人来回走动</td>
+<td>平衡检测频率与干扰</td>
+</tr>
+<tr>
+<td>逆时针最低档</td>
+<td>约 2～3 秒</td>
+<td>对快速移动非常敏感的场合</td>
+<td>捕捉高频动作</td>
+</tr>
+</tbody>
+</table>
+<p>建议从两枚旋钮的中间位置开始，根据误报或漏报情况逐步微调，并记录测试结果以找到最合适的组合。</p>
+<h3 id="_5">示例代码</h3>
+<pre><code class="language-python">import lgpio
+import time
+
+PIR_PIN = 17
+
+h = lgpio.gpiochip_open(0)
+lgpio.gpio_claim_input(h, PIR_PIN)
+
+try:
+    while True:
+        if lgpio.gpio_read(h, PIR_PIN):
+            print(&quot;Motion detected!&quot;)
+        time.sleep(0.5)
+except KeyboardInterrupt:
+    lgpio.gpiochip_close(h)
+</code></pre>
+<p>更多示例脚本与说明请参阅 <a href="https://github.com/SwartzMss/pi5-hs-sr501--tools">pi5-hs-sr501--tools</a>。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../face-recognition/" class="btn btn-neutral float-left" title="Pi5 人脸识别工具"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../adc/" class="btn btn-neutral float-right" title="模数转换器">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../face-recognition/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../adc/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://SwartzMss.github.io/RaspberryPier/esp32cam/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>ESP32-CAM 模块使用 - RaspberryPier</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ESP32-CAM \u6a21\u5757\u4f7f\u7528";
+        var mkdocs_page_input_path = "esp32cam.md";
+        var mkdocs_page_url = "/RaspberryPier/esp32cam/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> RaspberryPier
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pin-layout/">引脚布局</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">树莓派专用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../gpio/">GPIO 操作指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bluetooth/">蓝牙配置与数据交换</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usb-soundcard/">USB 外置声卡</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../face-recognition/">Pi5 人脸识别工具</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../sensors/">传感器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../adc/">模数转换器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../potentiometer/">旋转电位器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../button/">按键与开关模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../service/">脚本系统服务</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../buzzer/">蜂鸣器</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../motors/">电机基础</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../servo/">MG90S 舵机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ps2-joystick/">PS2 摇杆/手柄</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../irremote/">IR38K 红外接收</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../nrf24l01/">nRF24L01 无线模块</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../oled/">SH1106 OLED 屏幕</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT 服务器</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">ESP32-CAM 模块使用</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">准备工作</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">启用视频流</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">树莓派端拉流</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">常见问题</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../esp32-selection/">ESP32 选型指南</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../webserver/">Node-RED Web 服务器</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">RaspberryPier</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">ESP32-CAM 模块使用</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="esp32-cam">ESP32-CAM 模块使用</h1>
+<p>ESP32-CAM 是集成摄像头和 Wi-Fi 功能的低成本开发板，常用于搭建轻量级监控或物联网摄像头。本节介绍如何刷写官方示例、启用视频流，并在树莓派端拉流查看。</p>
+<h2 id="_1">准备工作</h2>
+<ol>
+<li>在 Arduino IDE 的 <strong>首选项</strong> 中将 <code>https://espressif.github.io/arduino-esp32/package_esp32_index.json</code> 添加到 “附加开发板管理器网址”。</li>
+<li>打开<strong>开发板管理器</strong>搜索 <code>esp32</code>，在“esp32 by Espressif Systems”那行选择最新版本（如 3.2.1）并点击“安装”，安装完成后在工具菜单中选择“AI Thinker ESP32-CAM”或与你的模组相符的板型。</li>
+<li>使用 USB 转串口模块连接 ESP32-CAM 的 <code>U0T</code>、<code>U0R</code>、<code>GND</code> 与 <code>5V</code>，烧录时需将 <code>IO0</code> 短接到 <code>GND</code> 进入下载模式。</li>
+<li>打开示例 <code>CameraWebServer</code>，在代码中填写 Wi-Fi 名称和密码后编译并上传。</li>
+<li>上传成功后断开 <code>IO0</code> 的短接并重新上电，在串口监视器中记录分配到的 IP 地址。</li>
+</ol>
+<h2 id="_2">启用视频流</h2>
+<p><code>CameraWebServer</code> 示例会启动一个简易网页，常见接口如下：</p>
+<ul>
+<li><code>http://&lt;esp32_ip&gt;/</code> — 控制面板，可选择分辨率并开启/关闭串流；</li>
+<li><code>http://&lt;esp32_ip&gt;:81/stream</code> — 提供 MJPEG 视频流，适合其他程序拉取；</li>
+<li><code>http://&lt;esp32_ip&gt;/capture</code> — 获取单张 JPEG 图片。</li>
+</ul>
+<p>在浏览器访问控制面板即可检测摄像头是否正常工作。</p>
+<h2 id="_3">树莓派端拉流</h2>
+<p>在树莓派上可以使用 <code>ffmpeg</code> 或 <code>vlc</code> 等工具拉取视频流。例如利用 ffmpeg 进行录制：</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install ffmpeg
+ffmpeg -i http://&lt;esp32_ip&gt;:81/stream -vcodec copy -an -f matroska output.mkv
+</code></pre>
+<p>如果希望直接预览，可执行：</p>
+<pre><code class="language-bash">ffplay http://&lt;esp32_ip&gt;:81/stream
+</code></pre>
+<p>或在 VLC 中选择“打开网络串流”并输入同样的地址。</p>
+<h2 id="_4">常见问题</h2>
+<ul>
+<li><strong>无法烧录或连接</strong>：确认 USB 转串口的接线正确，并在上传时短接 <code>IO0</code> 与 <code>GND</code>。</li>
+<li><strong>画面卡顿或延迟</strong>：在控制面板降低分辨率，并确保无线网络稳定。</li>
+<li><strong>网页无法访问</strong>：检查串口输出的 IP 地址是否正确，可重启设备重新获取。</li>
+</ul>
+<p>完成以上设置后，树莓派即可实时获取 ESP32-CAM 的画面，后续可根据需求进行录像或图像处理。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../mqtt/" class="btn btn-neutral float-left" title="MQTT 服务器"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../esp32-selection/" class="btn btn-neutral float-right" title="ESP32 选型指南">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../mqtt/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../esp32-selection/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
